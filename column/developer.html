@@ -1,0 +1,70 @@
+---
+layout: default
+title: 《工程师的进化》
+---
+<div id="index" class="row">
+  <div class="col-sm-9">
+    <div class="post-area">
+      
+      <a href="/column/" title="专栏博客">
+      <div class="post-list-header">
+          <br />
+          <font color="#555555">{{ page.title }}</font>
+          <br />
+      </div>
+      </a>
+
+      <!-- 分界线 -->
+
+      <div class="post-list-body">
+        <div class="all-posts" post-cate="All">
+        {% for post in site.posts %}
+        <!-- 修改这个值来确保分类筛选 -->
+        {% if post.column[0] == 2 %}
+
+          <a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">
+            <div class="post-list-item">
+              <span class="entry-date date published">
+              <time datetime="{{ post.date | date_to_xmlschema }}">
+                <font color="#aaaaaa">    {{ post.date | date: "%Y-%m-%d" }} By 张涛</font>
+              </time>
+              </span>
+
+              <h2><font color="#333333">{{ post.title }}</font></h2>
+              {% if post.description %}
+                <p><font color="#666666"> {{ post.description }} </font></p>
+              {% endif %}
+            </div>
+          </a>
+
+        {% endif %}
+        {% endfor %}
+
+        </div><!-- all-posts结束 -->
+      </div><!-- post-list-body结束 -->
+   
+    </div>
+  </div><!-- col-sm-9结束 -->
+
+
+
+  <div class="col-sm-3">
+    <div id="myAffix" class="shadow-bottom-center hidden-xs" >
+      <div class="categories-list-header" align="center">
+        支持我请点击右上角的
+        <a href="https://github.com/kymjs"><button class="btn btn-sm btn-primary js-toggler-target" title="Follow kymjs">Follow</button> </a>
+      </div>
+    <!--  <div class="content-text"></div> -->
+    </div>
+    <p>
+
+    </p>
+    {% include hot.html %} 
+    <p>
+
+    </p>
+    {% include weibo.html %} 
+    <p>
+  </div>
+</div>
+

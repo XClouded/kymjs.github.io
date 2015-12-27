@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>EventBus源码研读(上)|开源实验室-张涛</title>
+	<meta name="description" content="">
+	
+	<link rel="canonical" href="//code/2015/12/12/01">
+	<link rel="alternate" type="application/rss+xml" title="开源实验室" href="//feed.xml" />
+	
+	<!-- <link rel="stylesheet" href="//css/main.css"> -->
+
+	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/fontawesome/4.2.0/css/font-awesome.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="//static/css/bootstrap.min.css"> -->
+	
+	<link rel="stylesheet" type="text/css" href="/static/css/index.css">
+	
+	<!-- <script type="text/javascript" src="//static/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="//static/js/bootstrap.min.js"></script> -->
+
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript" src="//static/js/index.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai_sublime.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/railscasts.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai.min.css"> -->
+	<!-- <script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/languages/dos.min.js"></script> -->
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?12d2f5b556fafe71819af97b2ec2c5e8";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+</head>
+
+ <!--  <body data-spy="scroll" data-target="#myAffix"> -->
+  <body>
+
+    <header>
+
+<!-- navbar -->
+  <nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="//">开源实验室</a>
+      <p class="navbar-text">无论何时，请保持学者的谦逊与宽容</p>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" align="right">
+      <ul class="nav navbar-nav navbar-right">
+
+        <li>
+        
+        <a href="//column"><span class="glyphicon glyphicon-th-large"></span> 专栏</a></li>
+
+        <li>
+        
+        <a href="//"><span class="glyphicon glyphicon-th-large"></span> 博客</a></li>
+        
+        <li>
+        
+        <a href="//works"><span class="glyphicon glyphicon-play"></span> 作品</a></li>
+
+        <li>
+        
+        <a href="//about"><span class="glyphicon glyphicon-heart"></span> 关于</a></li>
+
+        <li>
+        
+        <a href="//donate"><span class="glyphicon glyphicon-heart"></span> 感谢</a></li>
+
+        
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+</header>
+
+    <div id="main" class="container main">
+      <div class="row">
+  <div id="myArticle" class="col-sm-9">
+    <div class="post-area post">
+      <header align="center">
+        <h1>EventBus源码研读(上)</h1>
+        <p>
+          <h2>2015-12-12</h2>
+          
+          
+        </p>
+      </header>
+      <hr>
+      <article id="page">
+        <h3>摘要</h3>
+        本文原创，转载请注明地址：<a href="http://kymjs.com/code/2015/12/12/01">http://kymjs.com/code/2015/12/12/01</a><br>
+        <!-- 本博客客户端下载【<a href="http://www.kymjs.com/app">请点击</a>】<br> -->
+        本文总共分三部分，从源码角度分析了 EventBus 库。以及介绍了其内部实现注册、发送、响应、取消注册的原理。  <br><br>
+        <ul id="markdown-toc">
+  <li><a href="#section">基础用法</a>    <ul>
+      <li><a href="#section-1">注册订阅者</a></li>
+      <li><a href="#section-2">事件发送</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-3">进入源码世界</a>    <ul>
+      <li><a href="#eventbus">入口类EventBus类</a></li>
+      <li><a href="#eventbusbuilder">EventBusBuilder类</a></li>
+      <li><a href="#poster">三个Poster类</a></li>
+    </ul>
+  </li>
+  <li><a href="#poster-1">Poster工作原理</a></li>
+</ul>
+
+<p><a href="https://github.com/greenrobot/EventBus">EventBus</a> 是一款针对Android优化的发布/订阅事件总线。主要功能是替代Intent, Handler, BroadCast 在 Fragment，Activity，Service，线程之间传递消息.优点是开销小，使用方便,可以很大程度上降低它们之间的耦合，使得我们的代码更加简洁，耦合性更低，提升我们的代码质量。<br />
+类似的库还有 <a href="https://github.com/square/otto">Otto</a> ,今天就带大家一起研读 EventBus 的源码.   </p>
+
+<p>在写这篇文章之前，我已经将本文相关的中文注释代码上传到了GitHub：<a href="https://github.com/kymjs/EventBus">https://github.com/kymjs/EventBus</a>  </p>
+
+<p>第一篇 EventBus源码研读(上) <a href="http://kymjs.com/code/2015/12/12/01/">http://kymjs.com/code/2015/12/12/01/</a> <br />
+第二篇 EventBus源码研读(中) <a href="http://www.kymjs.com/code/2015/12/13/01/">http://kymjs.com/code/2015/12/13/01/</a>  <br />
+第三篇 EventBus源码研读(下) <a href="http://kymjs.com/code/2015/12/16/01/">http://kymjs.com/code/2015/12/16/01/</a>   </p>
+
+<h2 id="section">基础用法</h2>
+<p>在读代码之前,首先你得了解它的基本用法.如果你已经能够很熟练的使用EventBus等事件总线库了,那么你可以跳过本节.<br />
+首先引入依赖包,查看GitHub主页的说明: <a href="https://github.com/greenrobot/EventBus">https://github.com/greenrobot/EventBus</a><br />
+在Gradle文件加入 <br />
+<code>compile 'de.greenrobot:eventbus:2.4.0'</code></p>
+
+<p>用法与广播相同,且比广播更简单:</p>
+
+<h4 id="section-1">注册订阅者</h4>
+<p>首先你需要注册一个<code>事件订阅者</code>,为了方便理解你可以把他当成广播的<code>广播接收者</code>
+你可以在任何一个类中使用如下代码注册以及解除注册</p>
+
+<div class="highlight"><pre><code class="java"> 
+<span class="c1">//把当前类注册为订阅者(接收者)</span>
+<span class="n">EventBus</span><span class="o">.</span><span class="na">getDefault</span><span class="o">().</span><span class="na">register</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+
+<span class="c1">//解除注册当前类(同广播一样,一定要调用,否则会内存泄露)</span>
+<span class="n">EventBus</span><span class="o">.</span><span class="na">getDefault</span><span class="o">().</span><span class="na">unregister</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+</code></pre></div>
+
+<p>注册了订阅者以后,我们需要创建一个回调方法<code>onEvent</code>,当我们订阅的事件发送的时候就会回调它</p>
+
+<div class="highlight"><pre><code class="java"> 
+<span class="c1">//其实命名不一定必须是onEvent(),但那属于高级用法了,这里我们只说最简单的</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">onEvent</span><span class="o">(</span><span class="n">Object</span> <span class="n">event</span><span class="o">)</span> <span class="o">{}</span>
+</code></pre></div>
+
+<h4 id="section-2">事件发送</h4>
+<p>当有了订阅者以后,我们的代码已经可以工作了.但是此时的代码是没有意义的,我们订阅的事件还没有发生.
+就像广播需要一个<code>sendBroadcast()</code>，EventBus需要<code>post(event)</code> <br />
+你可以在任何一个类中使用如下代码发送事件：</p>
+
+<div class="highlight"><pre><code class="java"> 
+<span class="cm">/**</span>
+<span class="cm"> * 这里的event类型必须和上面我们onEvent()方法的参数类型一致</span>
+<span class="cm"> * (子父类关系也不行,必须是相同类型，原因我们下面看源码)</span>
+<span class="cm"> */</span>
+<span class="n">EventBus</span><span class="o">.</span><span class="na">getDefault</span><span class="o">().</span><span class="na">post</span><span class="o">(</span><span class="n">event</span><span class="o">);</span>
+</code></pre></div>
+
+<p>至此,EventBus就可以正常工作了.</p>
+
+<h2 id="section-3">进入源码世界</h2>
+
+<h4 id="eventbus">入口类EventBus类</h4>
+<p>我们从使用的流程来,首先看<code>EventBus#getDefault()</code></p>
+
+<div class="highlight"><pre><code class="java"> 
+<span class="kd">public</span> <span class="kd">static</span> <span class="n">EventBus</span> <span class="nf">getDefault</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">defaultInstance</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">synchronized</span> <span class="o">(</span><span class="n">EventBus</span><span class="o">.</span><span class="na">class</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">defaultInstance</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">defaultInstance</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EventBus</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">defaultInstance</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<p>只是简单的维护单例,调用构造方法,再看构造方法,调用重载的构造方法,重载的构造方法又需要一个<code>EventBusBuilder</code>对象</p>
+
+<div class="highlight"><pre><code class="java"> 
+<span class="kd">public</span> <span class="nf">EventBus</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">this</span><span class="o">(</span><span class="n">DEFAULT_BUILDER</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="n">EventBus</span><span class="o">(</span><span class="n">EventBusBuilder</span> <span class="n">builder</span><span class="o">)</span> <span class="o">{</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<h4 id="eventbusbuilder">EventBusBuilder类</h4>
+<p>看名字就知道,这个类是用来创建<code>EventBus</code>对象的.<br />
+<img src="/images/blog_image/20151211_1.png" alt="开源实验室：图1" /></p>
+
+<p>Builder类提供了这么多个可选的配置属性,这里变量含义大家直接看我的注释,就不多作解释了<br />
+我们主要来看最终的建造方法</p>
+
+<div class="highlight"><pre><code class="java"> 
+<span class="cm">/**</span>
+<span class="cm"> * 根据参数创建对象,并赋值给EventBus.defaultInstance, 必须在默认的eventbus对象使用以前调用</span>
+<span class="cm"> *</span>
+<span class="cm"> * @throws EventBusException if there&#39;s already a default EventBus instance in place</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="n">EventBus</span> <span class="nf">installDefaultEventBus</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">synchronized</span> <span class="o">(</span><span class="n">EventBus</span><span class="o">.</span><span class="na">class</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">EventBus</span><span class="o">.</span><span class="na">defaultInstance</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">EventBusException</span><span class="o">(</span><span class="s">&quot;Default instance already exists.&quot;</span> <span class="o">+</span>
+                    <span class="s">&quot; It may be only set once before it&#39;s used the first time to ensure &quot;</span> <span class="o">+</span>
+                    <span class="s">&quot;consistent behavior.&quot;</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">EventBus</span><span class="o">.</span><span class="na">defaultInstance</span> <span class="o">=</span> <span class="n">build</span><span class="o">();</span>
+        <span class="k">return</span> <span class="n">EventBus</span><span class="o">.</span><span class="na">defaultInstance</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * 根据参数创建对象</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="n">EventBus</span> <span class="nf">build</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nf">EventBus</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<p>EventBusBuilder类提供了两种建造方法,还记得之前的getDefault()方法吗,维护了一个单例对象,<code>installDefaultEventBus()</code>
+方法建造的EventBus对象最终会赋值给那个单例对象,但是有一个前提就是我们之前并没有创建过那个单例对象. <br />
+这里大家思考一下，为什么如果<code>EventBus.defaultInstance</code>不为<code>null</code>以后程序要抛出异常？咱们之后说答案。<br />
+第二个方法就是默认的建造者方法了.</p>
+
+<p>再回到我们的<code>EventBus</code>构造方法,根据提供的建造者初始化了一大堆属性<br />
+<img src="/images/blog_image/20151211_3.png" alt="图3" /></p>
+
+<p>我们继续看这些初始化的字段.</p>
+
+<h4 id="poster">三个Poster类</h4>
+<p>先是一大堆Map,看不懂,跳过去,我们先来看这三个Poster，需要说明的一点就是：Poster只负责处理粘滞事件，原因我们之后看代码。</p>
+
+<div class="highlight"><pre><code class="java"> 
+<span class="kd">private</span> <span class="kd">final</span> <span class="n">HandlerPoster</span> <span class="n">mainThreadPoster</span><span class="o">;</span> <span class="c1">//前台发送者</span>
+<span class="kd">private</span> <span class="kd">final</span> <span class="n">BackgroundPoster</span> <span class="n">backgroundPoster</span><span class="o">;</span> <span class="c1">//后台发送者</span>
+<span class="kd">private</span> <span class="kd">final</span> <span class="n">AsyncPoster</span> <span class="n">asyncPoster</span><span class="o">;</span>   <span class="c1">//后台发送者(只让队列第一个待订阅者去响应)</span>
+</code></pre></div>
+
+<p>其实从类名我们就能看出个大概了,就是三个发送事件的方法。<br />
+我们来看看他们的内部实现. <br />
+这几个Poster的设计可以说是整个EventBus的一个经典部分,越看越想继续多看几遍.</p>
+
+<p>每个Poster中都有一个发送任务队列,<code>PendingPostQueue queue;</code>   </p>
+
+<p>进到队列里面再看
+定义了两个节点,从字面上理解就是队列的头节点和尾节点</p>
+
+<div class="highlight"><pre><code class="java"> 
+<span class="kd">private</span> <span class="n">PendingPost</span> <span class="n">head</span><span class="o">;</span> <span class="c1">//待发送对象队列头节点</span>
+<span class="kd">private</span> <span class="n">PendingPost</span> <span class="n">tail</span><span class="o">;</span><span class="c1">//待发送对象队列尾节点</span>
+</code></pre></div>
+
+<p>再看这个PendingPost类的实现:</p>
+
+<div class="highlight"><pre><code class="java"> 
+<span class="c1">//单例池,复用对象</span>
+<span class="kd">private</span> <span class="kd">final</span> <span class="kd">static</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">PendingPost</span><span class="o">&gt;</span> <span class="n">pendingPostPool</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">PendingPost</span><span class="o">&gt;();</span>
+
+<span class="n">Object</span> <span class="n">event</span><span class="o">;</span> <span class="c1">//事件类型</span>
+<span class="n">Subscription</span> <span class="n">subscription</span><span class="o">;</span> <span class="c1">//订阅者</span>
+<span class="n">PendingPost</span> <span class="n">next</span><span class="o">;</span> <span class="c1">//队列下一个待发送对象</span>
+</code></pre></div>
+
+<p>首先是提供了一个<code>池</code>的设计，类似于我们的线程池，目的是为了减少对象创建的开销，当一个对象不用了，我们可以留着它，下次再需要的时候返回这个保留的而不是再去创建。<br />
+再看最后的变量，<code>PendingPost next</code> 非常典型的队列设计，队列中每个节点都有一个指向下一个节点的指针(sorry，数据结构用C学的)。</p>
+
+<div class="highlight"><pre><code class="java"> 
+<span class="cm">/**</span>
+<span class="cm"> * 首先检查复用池中是否有可用,如果有则返回复用,否则返回一个新的</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param subscription 订阅者</span>
+<span class="cm"> * @param event        订阅事件</span>
+<span class="cm"> * @return 待发送对象</span>
+<span class="cm"> */</span>
+<span class="kd">static</span> <span class="n">PendingPost</span> <span class="nf">obtainPendingPost</span><span class="o">(</span><span class="n">Subscription</span> <span class="n">subscription</span><span class="o">,</span> <span class="n">Object</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">synchronized</span> <span class="o">(</span><span class="n">pendingPostPool</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">size</span> <span class="o">=</span> <span class="n">pendingPostPool</span><span class="o">.</span><span class="na">size</span><span class="o">();</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">PendingPost</span> <span class="n">pendingPost</span> <span class="o">=</span> <span class="n">pendingPostPool</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">size</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>
+            <span class="n">pendingPost</span><span class="o">.</span><span class="na">event</span> <span class="o">=</span> <span class="n">event</span><span class="o">;</span>
+            <span class="n">pendingPost</span><span class="o">.</span><span class="na">subscription</span> <span class="o">=</span> <span class="n">subscription</span><span class="o">;</span>
+            <span class="n">pendingPost</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+            <span class="k">return</span> <span class="n">pendingPost</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nf">PendingPost</span><span class="o">(</span><span class="n">event</span><span class="o">,</span> <span class="n">subscription</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<div class="highlight"><pre><code class="java"> 
+<span class="cm">/**</span>
+<span class="cm"> * 回收一个待发送对象,并加入复用池</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param pendingPost 待回收的待发送对象</span>
+<span class="cm"> */</span>
+<span class="kd">static</span> <span class="kt">void</span> <span class="nf">releasePendingPost</span><span class="o">(</span><span class="n">PendingPost</span> <span class="n">pendingPost</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">pendingPost</span><span class="o">.</span><span class="na">event</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="n">pendingPost</span><span class="o">.</span><span class="na">subscription</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="n">pendingPost</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="kd">synchronized</span> <span class="o">(</span><span class="n">pendingPostPool</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 防止池无限增长</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">pendingPostPool</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">&lt;</span> <span class="mi">10000</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">pendingPostPool</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">pendingPost</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<p><code>obtainPendingPost()</code>,对池复用的实现，每次新创建的节点尾指针都为 null 。<br />
+<code>releasePendingPost()</code>，回收pendingPost对象，既然有从池中取，当然需要有存。这里，原作非常细心的加了一次判断，<code>if (pendingPostPool.size() &lt; 10000)</code> 其实我觉得10000都很大了，1000就够了，我们一次只可能创建一个pendingPost，如果<code>ArrayList</code>里面存了上千条都没有取走，那么肯定是使用出错了。  </p>
+
+<p>PendingPost的代码我们就看完了，再回到上一级，队列的设计：</p>
+
+<p>接着是<code>PendingPostQueue</code>的入队方法</p>
+
+<div class="highlight"><pre><code class="java"> 
+<span class="kd">synchronized</span> <span class="kt">void</span> <span class="nf">enqueue</span><span class="o">(</span><span class="n">PendingPost</span> <span class="n">pendingPost</span><span class="o">)</span> <span class="o">{</span>
+	<span class="o">...</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">tail</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">tail</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">pendingPost</span><span class="o">;</span>
+        <span class="n">tail</span> <span class="o">=</span> <span class="n">pendingPost</span><span class="o">;</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">head</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">head</span> <span class="o">=</span> <span class="n">tail</span> <span class="o">=</span> <span class="n">pendingPost</span><span class="o">;</span>
+    <span class="o">}</span> 
+    <span class="o">...</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<p>首先将当前节点的上一个节点(入队前整个队列的最后一个节点)的尾指针指向当期正在入队的节点(传入的参数pendingPost)，并将队列的尾指针指向自己(自己变成队列的最后一个节点)，这样就完成了入队。<br />
+如果是队列的第一个元素(队列之前是空的),那么直接将队列的头尾两个指针都指向自身就行了。<br />
+出队也是类似的队列指针操作    </p>
+
+<div class="highlight"><pre><code class="java"> 
+<span class="kd">synchronized</span> <span class="n">PendingPost</span> <span class="nf">poll</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">PendingPost</span> <span class="n">pendingPost</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">head</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">head</span> <span class="o">=</span> <span class="n">head</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">head</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">tail</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">pendingPost</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<p>首先将出队前的头节点保留一个临时变量(它就是要出队的节点),拿到这个将要出队的临时变量的下一个节点指针，将出队前的第二个元素(出队后的第一个元素)的赋值为现在队列的头节点，出队完成。  <br />
+值得提一点的就是，<code>PendingPostQueue</code>的所有方法都声明了<code>synchronized</code>，这意味着在多线程下它依旧可以正常工作，细想想这也是必须的，对吗？</p>
+
+<p>再回到上一级，接着是<code>HandlerPoster</code>的入队方法<code>enqueue()</code>,</p>
+
+<div class="highlight"><pre><code class="java"> 
+<span class="cm">/**</span>
+<span class="cm"> * @param subscription 订阅者</span>
+<span class="cm"> * @param event        订阅事件</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">enqueue</span><span class="o">(</span><span class="n">Subscription</span> <span class="n">subscription</span><span class="o">,</span> <span class="n">Object</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">PendingPost</span> <span class="n">pendingPost</span> <span class="o">=</span> <span class="n">PendingPost</span><span class="o">.</span><span class="na">obtainPendingPost</span><span class="o">(</span><span class="n">subscription</span><span class="o">,</span> <span class="n">event</span><span class="o">);</span>
+    <span class="kd">synchronized</span> <span class="o">(</span><span class="k">this</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">queue</span><span class="o">.</span><span class="na">enqueue</span><span class="o">(</span><span class="n">pendingPost</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(!</span><span class="n">handlerActive</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">handlerActive</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+            <span class="k">if</span> <span class="o">(!</span><span class="n">sendMessage</span><span class="o">(</span><span class="n">obtainMessage</span><span class="o">()))</span> <span class="o">{</span>
+                <span class="k">throw</span> <span class="k">new</span> <span class="nf">EventBusException</span><span class="o">(</span><span class="s">&quot;Could not send handler message&quot;</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<p>入队方法会根据参数创建 待发送对象 pendingPost 并加入队列,如果此时 handleMessage() 没有在运行中,则发送一条空消息让 handleMessage 响应 <br />
+接着是<code>handleMessage()</code>方法</p>
+
+<div class="highlight"><pre><code class="java"> 
+<span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">handleMessage</span><span class="o">(</span><span class="n">Message</span> <span class="n">msg</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">boolean</span> <span class="n">rescheduled</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="kt">long</span> <span class="n">started</span> <span class="o">=</span> <span class="n">SystemClock</span><span class="o">.</span><span class="na">uptimeMillis</span><span class="o">();</span>
+        <span class="k">while</span> <span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">PendingPost</span> <span class="n">pendingPost</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">pendingPost</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="kd">synchronized</span> <span class="o">(</span><span class="k">this</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="c1">// 双重校验,类似单例中的实现</span>
+                    <span class="n">pendingPost</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+                    <span class="k">if</span> <span class="o">(</span><span class="n">pendingPost</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="n">handlerActive</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+                        <span class="k">return</span><span class="o">;</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+            <span class="c1">//如果订阅者没有取消注册,则分发消息</span>
+            <span class="n">eventBus</span><span class="o">.</span><span class="na">invokeSubscriber</span><span class="o">(</span><span class="n">pendingPost</span><span class="o">);</span>
+            
+            <span class="c1">//如果在一定时间内仍然没有发完队列中所有的待发送者,则退出</span>
+            <span class="kt">long</span> <span class="n">timeInMethod</span> <span class="o">=</span> <span class="n">SystemClock</span><span class="o">.</span><span class="na">uptimeMillis</span><span class="o">()</span> <span class="o">-</span> <span class="n">started</span><span class="o">;</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">timeInMethod</span> <span class="o">&gt;=</span> <span class="n">maxMillisInsideHandleMessage</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(!</span><span class="n">sendMessage</span><span class="o">(</span><span class="n">obtainMessage</span><span class="o">()))</span> <span class="o">{</span>
+                    <span class="k">throw</span> <span class="k">new</span> <span class="nf">EventBusException</span><span class="o">(</span><span class="s">&quot;Could not send handler message&quot;</span><span class="o">);</span>
+                <span class="o">}</span>
+                <span class="n">rescheduled</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+                <span class="k">return</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+        <span class="n">handlerActive</span> <span class="o">=</span> <span class="n">rescheduled</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<p><code>handleMessage()</code>不停的在待发送队列queue中去取消息。 
+需要说明的是在循环之外有个临时<code>boolean</code>变量<code>rescheduled</code>,最后是通过这个值去修改了<code>handlerActive</code>。而 handlerActive 是用来判断当前queue中是否有正在发送对象的任务，看到上面的入队方法<code>enqueue()</code>,如果已经有任务在跑着了，就不需要再去sendMessage()唤起我们的<code>handleMessage()</code>  </p>
+
+<p>最终通过<code>eventBus</code>对象的<code>invokeSubscriber()</code>最终发送出去，并回收这个<code>pendingPost</code>，让注册了的订阅者去响应(相当于回调),至于这个发送方法,我们之后再看。</p>
+
+<p>看完了HandlePoster类,另外两个异步的发送者实现代码也差不多,唯一的区别就是另外两个是工作在异步,实现的Runnable接口,大家自己类比,这里就不帖代码了.</p>
+
+<h2 id="poster-1">Poster工作原理</h2>
+<p>最后我们再来回顾一下<code>Poster</code>、<code>PendingPostQueue</code>、<code>PendingPost</code>这三个类，再看看下面这张图，是不是有种似曾相识的感觉。  </p>
+
+<p><img src="/images/blog_image/20151211_4.png" alt="开源实验室：图4" /></p>
+
+<p>啊哈，那是<code>Handle</code>、<code>Message</code>、<code>Looper</code>的工作原理，再看看Poster的<br />
+<img src="/images/blog_image/20151211_5.png" alt="开源实验室：图5" /></p>
+
+<p>至此，整个EventBus源码的发送接收核心部分已经分析完了。<br />
+还记得上面我们留下的那几个问题吗：<br />
+1、为什么如果EventBus.defaultInstance不为null以后程序要抛出异常？<br />
+2、Poster只对粘滞事件有效的说明代码在哪。<br />
+3、<code>invokeSubscriber()</code>最终的发送怎么实现的。<br />
+接下来我们继续分析它的注册流程以及粘滞事件的设计(那又是一个经典的地方)。  </p>
+
+<p>第二篇【EventBus源码研读(中)】已更新：<a href="http://www.kymjs.com/code/2015/12/13/01/">http://kymjs.com/code/2015/12/13/01/</a>  </p>
+
+        <br>
+        <div class="support-author">
+          <p>如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作！</p>
+            <a href="/donate"><button class="btn btn-sm btn-primary js-toggler-target" title="Follow kymjs">¥ 打赏支持</button> </a>
+        </div>
+
+        <div align="center"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-4706145830093249"
+               data-ad-slot="1547827239"
+               data-ad-format="auto"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+      </article>
+      <hr>
+    </div>
+    <div class="post-area post comment">
+      <!-- 多说评论框 start -->
+      
+      <div class="ds-thread" data-thread-key="/code/2015/12/12/01" data-title="EventBus源码研读(上)" data-image="http://www.kymjs.com/image/logo_s.jpg" data-url="http://www.kymjs.com/code/2015/12/12/01"></div>
+      
+      <!-- 多说评论框 end -->
+    </div>
+  </div>
+
+  <div id="content" class="col-sm-3">
+    <div id="myAffix" class="shadow-bottom-center hidden-xs" >
+      <div class="categories-list-header" align="center">
+        支持我请点击右上角的
+        <a href="https://github.com/kymjs"><button class="btn btn-sm btn-primary js-toggler-target" title="Follow kymjs">Follow</button> </a>
+      </div>
+    <!--  <div class="content-text"></div> -->
+    </div>
+
+    <p>
+      
+    </p>
+
+    <div id="myAffix" class="shadow-bottom-center hidden-xs" >
+
+      <div class="categories-list-header" align="center">
+        <a href="https://github.com/kymjs/kymjs.github.io/blob/master/_posts/2015-12-12-01.md"> - -> <font color="#FF0000">文章纠错</font> <- - </a>
+      </div>
+      
+    <!--
+    <div class="categories-list-header" align="center">
+        Android 的 MVP 架构
+        <a href="https://github.com/kymjs/TheMVP"><button class="btn btn-sm btn-primary js-toggler-target" title="Star TheMVP">Star</button> </a>
+      </div>
+    -->
+    </div>
+
+    <p>
+      
+    </p>
+    <div class="shadow-corner-curl hidden-xs">
+  <br />
+  <ul class="list-unstyled">
+      <a href="http://www.kymjs.com/about"><img src="http://www.kymjs.com/images/kymjs_round.png" alt="kymjs张涛" style="width:80%">
+      </a>
+  </ul>
+
+  <span><a href="http://www.kymjs.com/about">
+  <center><font color="#000000">kymjs张涛</font></center>
+  </a></span><br>
+
+  <ul class="list-unstyled">
+    &nbsp;&nbsp;&nbsp;&nbsp;Android移动开发工程师，《<a href="https://github.com/kymjs/KJFrameForAndroid">KJFrameForAndroid</a>》开发框架作者。爱看书，爱敲码，善于交流，乐于分享。曾担任电影《<a href="http://baike.baidu.com/view/8784406.htm">天籁：一万年以后</a>》新媒体产品经理。
+
+    <hr width="90%" style="border:1px dashed black; height:1px">
+
+    <a href="http://www.kymjs.com/"></a><font color="red"><b>QQ交流群：</b></font>
+    <p><a href="http://www.kymjs.com/" target="_blank"></a><a href="http://jq.qq.com/?_wv=1027&amp;k=UH2fnF" target="_blank"><font color="blue"><b>257053751</b></font>（1群，2000人）</a></p>
+    <p><a href="http://jq.qq.com/?_wv=1027&amp;k=P9EObD" target="_blank"><font color="blue"><b>201055521</b></font>（2群，1000人）</a></p>
+    <font color="red"><b>我的邮箱：</b></font><br>
+    <p><b>kymjs123@gmail.com</b></p>
+    <font color="red"><b>微信公众号：</b></font><br>
+    <p><b>Android技术分享 </b></p>
+    <img src="/images/qrcode.jpg" height="180" width="180" alt="Android技术分享" />
+    <br />
+  </ul>
+  <br />
+</div>
+ 
+    <p>
+      
+    </p>
+    <div class="shadow-corner-curl hidden-xs">
+    <div class="categories-list-header" align="center">
+    	本周热门
+    </div>
+
+	<ul class="list-unstyled">
+		<br />
+		<li><a href="/column/resourcecode.html"><font color="#EE0000">【精】</font>EventBus 源码研读系列</a></li>  
+		<li><a href="/code/2015/10/18/01/">支持 gif 的图片预览控件</a></li>
+		<li><a href="/code/2015/06/06/01/">Android 流式布局实现</a></li>
+		<li><a href="/code/2015/11/09/01/"><font color="#EE0000">【精】</font>用 MVP 架构开发 Android 应用</a></li>
+		<li><a href="/code/2015/05/26/01/">Android 夜间模式实现</a></li>
+		<li><a href="/stickies/2015/04/27/01/">我的创业方案——都市书吧</a></li>
+		<li><a href="/code/2015/04/01/01/"><font color="#EE0000">【精】</font>致那些正在迷茫期的开发者</a></li>	
+		<br />
+	</ul>
+</div>
+
+    <p>
+
+    </p>
+    <div class="shadow-corner-curl hidden-xs">
+	<div class="categories-list-header" align="center">
+        新浪微博
+    </div> 
+	<iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=1&ptype=1&speed=0&skin=5&isTitle=0&noborder=1&isWeibo=1&isFans=1&uid=3025443500&verifier=c1f8031e&colors=f6f6fc,f6f6fc,666666,0082cb,ecfbfd&dpc=1"></iframe>
+ </div>   
+    <p>
+
+    </p>
+    <div class="shadow-corner-curl hidden-xs">
+    <div class="categories-list-header" align="center">
+      为你推荐
+    </div>   
+
+    <ul class="list-unstyled">
+      <br />
+      <div align="center">
+        <li><a href="https://github.com/kymjs?tab=repositories">我的GitHub</a></li> 
+        <li><a href="/works">开源实验室</a></li>
+        <li><a href="http://p.codekk.com/">CodeKK</a></li>
+        <li><a href="http://www.androidweekly.cn/">Android开发技术周报</a></li>
+        <li><a href="http://androiddevtools.cn/">AndroidDevTools</a></li>
+      </div>
+      <br />
+    </ul>
+</div>
+  
+  </div>
+</div>
+  </div>
+    
+    <div id="top" data-toggle="tooltip" data-placement="left" title="回到顶部">
+      <a href="javascript:;">
+        <div class="arrow"></div>
+        <div class="stick"></div>
+      </a>
+    </div>
+
+    <footer class="navbar navbar-inverse">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 navbar-text">
+        <span> kymjs张涛的开源实验室 </span>
+        <span class="point"> · </span>
+        <a href="mailto:kymjs123@gmail.com"><span class="glyphicon glyphicon-envelope"></span> kymjs123@gmail.com</a>
+        <span class="point"> · </span>
+        
+          
+          <a href="https://github.com/kymjs">
+            <span class="icon">
+              <svg viewBox="0 0 16 16">
+                <path fill="#aaa" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            Github
+            <!-- <span>kymjs</span> -->
+          </a>
+          
+          
+          <span class="point"> · </span>
+          <span><a href="//feed.xml">RSS</a></span>
+          <span class="point"> · </span>
+          <span>站务联系：766136833</span>
+          <span class="point"> · </span>
+          <span>Powered by Jekyll</span>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:"kymjs"};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+
+
+<!-- 在新窗口中打开 -->
+  <script type="text/javascript">
+    function addBlankTargetForLinks () {
+      $('a[href^="http"]').each(function(){
+          $(this).attr('target', '_blank');
+      });
+    }
+    //每次在有DOM插入时触发
+    $(document).bind('DOMNodeInserted', function(event) {
+      addBlankTargetForLinks();
+    });
+  </script>
+  </body>
+</html>

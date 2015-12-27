@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title><![CDATA[ 开源实验室]]></title>
+    <description><![CDATA[kymjs张涛的开源实验室]]></description>
+    <link><![CDATA[ http://www.kymjs.com/]]></link>
+    <pubDate><![CDATA[2015-12-27]]></pubDate>
+    <lastBuildDate><![CDATA[2015-12-27]]></lastBuildDate>
+    
+      <item>
+        <title><![CDATA[2015年终总结 - 张涛]]></title>
+        <description><![CDATA[就像一个终生跋涉的香客，不停地寻找一座可能根本不存在的神庙，我不知道他寻求的是什么不可思议的涅槃。我只知道，我们中的大多数，苟活一生，却从不曾寻找。我想也许你该停下来，看看你走的路，想想你想要的真实。————Seven凉奈《你的生活，该如何安放》 - 开源实验室]]></description>
+        <recommend></recommend>
+        <image><![CDATA[]]></image>
+        <pubDate><![CDATA[2015-12-22]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/stickies/2015/12/22/01]]></link>
+        
+        <tag><![CDATA[心情随笔]]></tag>
+        
+        
+        <category><![CDATA[stickies]]></category>
+        
+      </item>
+    
+      <item>
+        <title><![CDATA[EventBus源码研读(下) - 张涛]]></title>
+        <description><![CDATA[EventBus 是一款针对Android优化的发布/订阅事件总线。主要功能是替代Intent, Handler, BroadCast 在 Fragment，Activity，Service，线程之间传递消息.优点是开销小，使用方便,可以很大程度上降低它们之间的耦合，使得我们的代码更加简洁，耦合性更低，提升我们的代码质量。 类似的库还有 Otto ,今天就带大家一起研读 EventBus 的源码. - 开源实验室]]></description>
+        <recommend>true</recommend>
+        <image><![CDATA[http://kymjs.com/images/blog_image/20151211_8.png]]></image>
+        <pubDate><![CDATA[2015-12-16]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/code/2015/12/16/01]]></link>
+        
+        <tag><![CDATA[Android技术讲解]]></tag>
+        
+        
+        <category><![CDATA[code]]></category>
+        
+      </item>
+    
+      <item>
+        <title><![CDATA[EventBus源码研读(中) - 张涛]]></title>
+        <description><![CDATA[EventBus 是一款针对Android优化的发布/订阅事件总线。主要功能是替代Intent, Handler, BroadCast 在 Fragment，Activity，Service，线程之间传递消息.优点是开销小，使用方便,可以很大程度上降低它们之间的耦合，使得我们的代码更加简洁，耦合性更低，提升我们的代码质量。 类似的库还有 Otto ,今天就带大家一起研读 EventBus 的源码. - 开源实验室]]></description>
+        <recommend>true</recommend>
+        <image><![CDATA[http://kymjs.com/images/blog_image/20151211_6.png]]></image>
+        <pubDate><![CDATA[2015-12-13]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/code/2015/12/13/01]]></link>
+        
+        <tag><![CDATA[Android技术讲解]]></tag>
+        
+        
+        <category><![CDATA[code]]></category>
+        
+      </item>
+    
+      <item>
+        <title><![CDATA[EventBus源码研读(上) - 张涛]]></title>
+        <description><![CDATA[本文总共分三部分，从源码角度分析了 EventBus 库。以及介绍了其内部实现注册、发送、响应、取消注册的原理。   - 开源实验室]]></description>
+        <recommend>true</recommend>
+        <image><![CDATA[http://www.kymjs.com/images/blog_image/20151211_5.png]]></image>
+        <pubDate><![CDATA[2015-12-12]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/code/2015/12/12/01]]></link>
+        
+        <tag><![CDATA[Android技术讲解]]></tag>
+        
+        
+        <category><![CDATA[code]]></category>
+        
+      </item>
+    
+      <item>
+        <title><![CDATA[记一次 ListView 性能优化过程 - 张涛]]></title>
+        <description><![CDATA[奇葩需求催生创新，记一次对 ListView 的性能优化。（当然，RecyclerView 也是一样）   - 开源实验室]]></description>
+        <recommend>true</recommend>
+        <image><![CDATA[http://www.kymjs.com/images/blog_image/20151125_1.jpg]]></image>
+        <pubDate><![CDATA[2015-11-26]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/code/2015/11/26/01]]></link>
+        
+        <tag><![CDATA[Android技术讲解]]></tag>
+        
+        
+        <category><![CDATA[code]]></category>
+        
+      </item>
+    
+      <item>
+        <title><![CDATA[聊聊 Apache 开源协议 - 张涛]]></title>
+        <description><![CDATA[用一句话概括 Apache License 就是，你可以用这代码，但是如果开源你必须保留我写的声明；你可以改我的代码，但是如果开源你必须写清楚你改了哪些；你可以加新的协议要求，但不能与我所公布的协议要求产生冲突；你用这代码干什么我不管，但是你不能让我承担任何责任。 - 开源实验室]]></description>
+        <recommend></recommend>
+        <image><![CDATA[http://www.kymjs.com/images/blog_image/20151121_1.jpg]]></image>
+        <pubDate><![CDATA[2015-11-21]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/manager/2015/11/21/01]]></link>
+        
+        <tag><![CDATA[知识点积累]]></tag>
+        
+        
+        <category><![CDATA[manager]]></category>
+        
+      </item>
+    
+      <item>
+        <title><![CDATA[生日快乐 - 张涛]]></title>
+        <description><![CDATA[每个人都会沉迷在自己的戏里，就看什么时候观众会看不下去而叫醒你。——《说故事的人》 - 开源实验室]]></description>
+        <recommend></recommend>
+        <image><![CDATA[]]></image>
+        <pubDate><![CDATA[2015-11-13]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/stickies/2015/11/13/01]]></link>
+        
+        <tag><![CDATA[心情随笔]]></tag>
+        
+        
+        <category><![CDATA[stickies]]></category>
+        
+      </item>
+    
+      <item>
+        <title><![CDATA[用MVP架构开发Android应用 - 张涛]]></title>
+        <description><![CDATA[怎样从架构级别去搭建一个APP，怎样让他应对日益更改的界面与业务逻辑？今天为大家讲述一种在Android上实现MVP模式的方法。   - 开源实验室]]></description>
+        <recommend>true</recommend>
+        <image><![CDATA[http://www.kymjs.com/images/blog_image/20151029_1.png]]></image>
+        <pubDate><![CDATA[2015-11-09]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/code/2015/11/09/01]]></link>
+        
+        <tag><![CDATA[Android技术讲解]]></tag>
+        
+        
+        <category><![CDATA[code]]></category>
+        
+      </item>
+    
+      <item>
+        <title><![CDATA[支持gif的图片预览控件 - 张涛]]></title>
+        <description><![CDATA[最近实现了一个gif图片和普通图片浏览的功能，支持双击缩放，单机退出。同时可以选择使用jni的形式去高效加载gif或者更更精简的(仅2个类)gif控件 - 开源实验室]]></description>
+        <recommend></recommend>
+        <image><![CDATA[http://www.kymjs.com/image/kjgallery/kjgallery.gif]]></image>
+        <pubDate><![CDATA[2015-10-18]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/code/2015/10/18/01]]></link>
+        
+        <tag><![CDATA[Android技术讲解]]></tag>
+        
+        
+        <category><![CDATA[code]]></category>
+        
+      </item>
+    
+      <item>
+        <title><![CDATA[RecyclerView的通用适配器，和滚动时不加载图片的封装 - 张涛]]></title>
+        <description><![CDATA[介绍一个通用的Adapter实现，和对RecyclerView滚动时不加载图片的封装。 - 开源实验室]]></description>
+        <recommend>true</recommend>
+        <image><![CDATA[]]></image>
+        <pubDate><![CDATA[2015-10-11]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/code/2015/10/11/01]]></link>
+        
+        <tag><![CDATA[Android技术讲解]]></tag>
+        
+        
+        <category><![CDATA[code]]></category>
+        
+      </item>
+    
+      <item>
+        <title><![CDATA[GitHub线下聚会 - 张涛]]></title>
+        <description><![CDATA[GitHub是一个伟大的社区，平时我们互不见面，愉快地协作。但如能从线上到线下，那么更是一件令人欣喜的事情：数个好友，聚在一起，谈谈技术，谈谈对生活的理解，分享美好的事物。
+这样的场景，时时让我想起一千多年前那个秋天，江边阁上上的那次聚会。“胜友如云”，“高朋满座”。
+在 2015-09-15 北京一聚，同学们相谈甚欢，分别时，依依惜别，场景感人。各地同学也纷纷约谈见面。杭州，深圳，上海等纷纷建微信群准备线下聚会。 - 开源实验室]]></description>
+        <recommend></recommend>
+        <image><![CDATA[http://kymjs.com/images/blog_image/20150926_3.jpg]]></image>
+        <pubDate><![CDATA[2015-09-26]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/stickies/2015/09/26/01]]></link>
+        
+        <tag><![CDATA[心情随笔]]></tag>
+        
+        
+        <category><![CDATA[stickies]]></category>
+        
+      </item>
+    
+      <item>
+        <title><![CDATA[KJBitmap与KJHttp的深度用法 - 张涛]]></title>
+        <description><![CDATA[这篇文章是对KJFrameForAndroid使用的一个深入学习 - 开源实验室]]></description>
+        <recommend></recommend>
+        <image><![CDATA[]]></image>
+        <pubDate><![CDATA[2015-09-24]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/code/2015/09/24/01]]></link>
+        
+        <tag><![CDATA[Android框架]]></tag>
+        
+        
+        <category><![CDATA[code]]></category>
+        
+      </item>
+    
+      <item>
+        <title><![CDATA[kotlin简单项目 - 张涛]]></title>
+        <description><![CDATA[如果你真的希望深入的了解kotlin语言，可以查看英文版Kotlin语言文档，或者我的kotlin语言文档中文翻译项目KotlinDoc-cn：https://github.com/kymjs/KotlinDoc-cn - 开源实验室]]></description>
+        <recommend></recommend>
+        <image><![CDATA[]]></image>
+        <pubDate><![CDATA[2015-08-03]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/code/2015/08/03/01]]></link>
+        
+        <tag><![CDATA[Kotlin开发Android]]></tag>
+        
+        
+        <category><![CDATA[code]]></category>
+        
+      </item>
+    
+      <item>
+        <title><![CDATA[kotlin基础语法 - 张涛]]></title>
+        <description><![CDATA[如果你真的希望深入的了解kotlin语言，可以查看英文版Kotlin语言文档，或者我的kotlin语言文档中文翻译项目KotlinDoc-cn：https://github.com/kymjs/KotlinDoc-cn - 开源实验室]]></description>
+        <recommend></recommend>
+        <image><![CDATA[]]></image>
+        <pubDate><![CDATA[2015-08-02]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/code/2015/08/02/01]]></link>
+        
+        <tag><![CDATA[Kotlin开发Android]]></tag>
+        
+        
+        <category><![CDATA[code]]></category>
+        
+      </item>
+    
+      <item>
+        <title><![CDATA[使用Kotlin开发Android - 张涛]]></title>
+        <description><![CDATA[我首先声明我并没有使用Kotlin很长时间，我几乎是在学习的同时写了这些文章的。我并没有尝试任何其它的替代语言，例如Go和Scala，所以如果你是真的考虑换一种开发语言的话，我建议你去搜索一下其他人对这些语言的评价。 - 开源实验室]]></description>
+        <recommend></recommend>
+        <image><![CDATA[]]></image>
+        <pubDate><![CDATA[2015-07-22]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/code/2015/07/22/01]]></link>
+        
+        <tag><![CDATA[Kotlin开发Android]]></tag>
+        
+        
+        <category><![CDATA[code]]></category>
+        
+      </item>
+    
+      <item>
+        <title><![CDATA[Android流式布局实现 - 张涛]]></title>
+        <description><![CDATA[新项目用到了一种全新布局————Android标签流式布局的功能，正好一直说给大家讲自定义控件的实现，今天就为大家讲一种android流式布局的实现。 - 开源实验室]]></description>
+        <recommend>true</recommend>
+        <image><![CDATA[http://kymjs.com/images/blog_image/20150606_2.gif]]></image>
+        <pubDate><![CDATA[2015-06-06]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/code/2015/06/06/01]]></link>
+        
+        <tag><![CDATA[Android技术讲解]]></tag>
+        
+        
+        <category><![CDATA[code]]></category>
+        
+      </item>
+    
+      <item>
+        <title><![CDATA[Android夜间模式实现 - 张涛]]></title>
+        <description><![CDATA[最近在做一个Android夜间模式的功能，又重新研究了一下Theme机制。贯彻我的风格，以解决问题为目标，写了个小Demo，简单了实现了切换夜间模式，为大家讲解。 - 开源实验室]]></description>
+        <recommend>true</recommend>
+        <image><![CDATA[]]></image>
+        <pubDate><![CDATA[2015-05-26]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/code/2015/05/26/01]]></link>
+        
+        <tag><![CDATA[Android技术讲解]]></tag>
+        
+        
+        <category><![CDATA[code]]></category>
+        
+      </item>
+    
+      <item>
+        <title><![CDATA[如何在Android应用程序中保存数据 - 张涛]]></title>
+        <description><![CDATA[一些日常总结的笔记与经验~  - 开源实验室]]></description>
+        <recommend></recommend>
+        <image><![CDATA[]]></image>
+        <pubDate><![CDATA[2015-05-24]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/code/2015/05/24/01]]></link>
+        
+        <tag><![CDATA[知识点积累]]></tag>
+        
+        
+        <category><![CDATA[code]]></category>
+        
+      </item>
+    
+      <item>
+        <title><![CDATA[Search Engine Optimization - 张涛]]></title>
+        <description><![CDATA[As a developer, I have to say English. On the way to learn English, I was too young too naive.  - 开源实验室]]></description>
+        <recommend></recommend>
+        <image><![CDATA[]]></image>
+        <pubDate><![CDATA[2015-05-19]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/english/2015/05/19/01]]></link>
+        
+        <tag><![CDATA[英语学习]]></tag>
+        
+        
+        <category><![CDATA[english]]></category>
+        
+      </item>
+    
+      <item>
+        <title><![CDATA[网上订餐产品运营分析 - 张涛]]></title>
+        <description><![CDATA[请原谅我就这么黑了小米，不知道为什么，看到小米这个品牌就想去黑它，就觉得不爽。可能真的就是平时为MIUI做兼容的时候被折磨疯了吧。 - 开源实验室]]></description>
+        <recommend></recommend>
+        <image><![CDATA[http://kymjs.com/images/blog_image/20150514_1.png]]></image>
+        <pubDate><![CDATA[2015-05-16]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/stickies/2015/05/16/01]]></link>
+        
+        <tag><![CDATA[策划与管理]]></tag>
+        
+        
+        <category><![CDATA[stickies]]></category>
+        
+      </item>
+    
+      <item>
+        <title><![CDATA[KJHttp框架使用讲解 - 张涛]]></title>
+        <description><![CDATA[写给那些在用、想用、还没有用过KJFrame的朋友。 KJFrameForAndroid总共分为四个功能：Activity继承链的规范，Http数据请求和上传下载，Bitmap大图加载以及ListView滚动时只加载内存图片，数据库对象存储与集合对象存储。还有一个独立出来的功能CJFrame插件化开发框架，支持启动在你的手机中未安装的apk应用。  - 开源实验室]]></description>
+        <recommend></recommend>
+        <image><![CDATA[]]></image>
+        <pubDate><![CDATA[2015-05-12]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/code/2015/05/12/01]]></link>
+        
+        <tag><![CDATA[Android框架]]></tag>
+        
+        
+        <category><![CDATA[code]]></category>
+        
+      </item>
+    
+      <item>
+        <title><![CDATA[使用框架帮助Activity规范化 - 张涛]]></title>
+        <description><![CDATA[写给那些在用、想用、还没有用过KJFrame的朋友。 KJFrameForAndroid总共分为四个功能：Activity继承链的规范，Http数据请求和上传下载，Bitmap大图加载以及ListView滚动时只加载内存图片，数据库对象存储与集合对象存储。还有一个独立出来的功能CJFrame插件化开发框架，支持启动在你的手机中未安装的apk应用。  - 开源实验室]]></description>
+        <recommend></recommend>
+        <image><![CDATA[]]></image>
+        <pubDate><![CDATA[2015-05-10]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/code/2015/05/10/01]]></link>
+        
+        <tag><![CDATA[Android框架]]></tag>
+        
+        
+        <category><![CDATA[code]]></category>
+        
+      </item>
+    
+      <item>
+        <title><![CDATA[深入讲解WebView——下 - 张涛]]></title>
+        <description><![CDATA[作为Android开发者，我们都知道在手机中内置了一款高性能 webkit 内核浏览器,在 SDK 中封装为一个叫做 WebView 组件。今天就为大家讲讲Android中WebView的详细使用方法 - 开源实验室]]></description>
+        <recommend></recommend>
+        <image><![CDATA[]]></image>
+        <pubDate><![CDATA[2015-05-04]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/code/2015/05/04/01]]></link>
+        
+        <tag><![CDATA[Android技术讲解]]></tag>
+        
+        
+        <category><![CDATA[code]]></category>
+        
+      </item>
+    
+      <item>
+        <title><![CDATA[深入讲解WebView——上 - 张涛]]></title>
+        <description><![CDATA[作为Android开发者，我们都知道在手机中内置了一款高性能 webkit 内核浏览器,在 SDK 中封装为一个叫做 WebView 组件。今天就为大家讲讲Android中WebView的详细使用方法 - 开源实验室]]></description>
+        <recommend>true</recommend>
+        <image><![CDATA[]]></image>
+        <pubDate><![CDATA[2015-05-03]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/code/2015/05/03/01]]></link>
+        
+        <tag><![CDATA[Android技术讲解]]></tag>
+        
+        
+        <category><![CDATA[code]]></category>
+        
+      </item>
+    
+      <item>
+        <title><![CDATA[OSChina，从东涌到西涌 - 张涛]]></title>
+        <description><![CDATA[出发以前，不止一位朋友警告过我：从东涌到西涌是一段艰难的跋涉，要有心理准备。但在我的想象里，它仍然只是一段漫长的海岸线漫步而已——也许时间会久一点，五六个小时嘛，大家都这样说。 - 开源实验室]]></description>
+        <recommend></recommend>
+        <image><![CDATA[http://kymjs.com/images/blog_image/20150501_7.jpg]]></image>
+        <pubDate><![CDATA[2015-05-01]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/stickies/2015/05/01/01]]></link>
+        
+        <tag><![CDATA[心情随笔]]></tag>
+        
+        
+        <category><![CDATA[stickies]]></category>
+        
+      </item>
+    
+      <item>
+        <title><![CDATA[通用Adapter与ListView滚动时不加载图片的封装 - 张涛]]></title>
+        <description><![CDATA[介绍一个通用的Adapter实现，和对ListView滚动时不加载图片的封装。 - 开源实验室]]></description>
+        <recommend>true</recommend>
+        <image><![CDATA[]]></image>
+        <pubDate><![CDATA[2015-04-28]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/code/2015/04/28/01]]></link>
+        
+        <tag><![CDATA[Android技术讲解]]></tag>
+        
+        
+        <category><![CDATA[code]]></category>
+        
+      </item>
+    
+      <item>
+        <title><![CDATA[我的创业方案A——都市书吧1 - 张涛]]></title>
+        <description><![CDATA[身边一直有创业的朋友，也一直有想拉我创业的朋友，我只告诉他们还没到时间。90%的人都想过创业，但只有10%的人去做了，最后又只有这10%里面的10%成功了。我从来没有忘记过我的创业之心，在我的计划里会在25岁决定一个去留，是留在深圳还是回家创业(我不会呆在深圳或其他大城市创业，原因以后再说)，而决定这一去留的索引，很现实——就是在我25岁时的年薪。 - 开源实验室]]></description>
+        <recommend></recommend>
+        <image><![CDATA[]]></image>
+        <pubDate><![CDATA[2015-04-27]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/stickies/2015/04/27/01]]></link>
+        
+        <tag><![CDATA[我的创业方案]]></tag>
+        
+        
+        <category><![CDATA[stickies]]></category>
+        
+      </item>
+    
+      <item>
+        <title><![CDATA[仿iPhone辅助球实现 - 张涛]]></title>
+        <description><![CDATA[过年在家时，翻出来了很多去年写的代码。就挑出来了一些自我感觉良好的讲解了。 - 开源实验室]]></description>
+        <recommend></recommend>
+        <image><![CDATA[http://kymjs.com/images/blog_image/20150412_1.jpg]]></image>
+        <pubDate><![CDATA[2015-04-12]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/code/2015/04/12/01]]></link>
+        
+        <tag><![CDATA[Android技术讲解]]></tag>
+        
+        
+        <category><![CDATA[code]]></category>
+        
+      </item>
+    
+      <item>
+        <title><![CDATA[你会怎么样设计一个电视遥控器？ - 张涛]]></title>
+        <description><![CDATA[如果让你设计一个电视遥控器，你会怎么设计？这个题目不一定是出给设计师，难道项目负责人就可以不用思考吗。 - 开源实验室]]></description>
+        <recommend></recommend>
+        <image><![CDATA[]]></image>
+        <pubDate><![CDATA[2015-04-11]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/manager/2015/04/11/01]]></link>
+        
+        <tag><![CDATA[策划与管理]]></tag>
+        
+        
+        <category><![CDATA[manager]]></category>
+        
+      </item>
+    
+      <item>
+        <title><![CDATA[项目经理初长成——明确认知 - 张涛]]></title>
+        <description><![CDATA[作为项目经理，尤其是移动开发项目经理，有时候不得不去思考一些非技术上的东西，例如用户体验。 - 开源实验室]]></description>
+        <recommend></recommend>
+        <image><![CDATA[]]></image>
+        <pubDate><![CDATA[2015-04-05]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/manager/2015/04/05/01]]></link>
+        
+        <tag><![CDATA[策划与管理]]></tag>
+        
+        
+        <category><![CDATA[manager]]></category>
+        
+      </item>
+    
+  </channel>
+</rss>

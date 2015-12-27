@@ -1,0 +1,32 @@
+---
+layout: default
+---
+<div class="post-area post">
+    <header align="center">
+        {% if page.image %}
+            <img src="{{ page.image }}" alt="开源实验室" width="317" height="152"/>
+        {% else %}
+            <h1>{{ page.title }}</h1>
+        {% endif %}
+    </header>
+    <hr>
+    <article class="page-content">
+        {{ content }}
+        <div align="center">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <ins class="adsbygoogle"
+                   style="display:block"
+                   data-ad-client="ca-pub-4706145830093249"
+                   data-ad-slot="1547827239"
+                   data-ad-format="auto"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+    </article>
+</div>
+<div class="post-area post comment">
+    <!-- 多说评论框 start -->
+    
+    <div class="ds-thread" data-thread-key="{{ page.url }}" data-title="{{ page.title }}" data-image="http://www.kymjs.com/image/logo_s.jpg" data-url="{{ site.url }}{{ post.url }}"></div>
+    
+    <!-- 多说评论框 end -->
+</div>

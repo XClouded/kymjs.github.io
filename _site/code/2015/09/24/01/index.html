@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>KJBitmap与KJHttp的深度用法|开源实验室-张涛</title>
+	<meta name="description" content="">
+	
+	<link rel="canonical" href="//code/2015/09/24/01">
+	<link rel="alternate" type="application/rss+xml" title="开源实验室" href="//feed.xml" />
+	
+	<!-- <link rel="stylesheet" href="//css/main.css"> -->
+
+	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/fontawesome/4.2.0/css/font-awesome.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="//static/css/bootstrap.min.css"> -->
+	
+	<link rel="stylesheet" type="text/css" href="/static/css/index.css">
+	
+	<!-- <script type="text/javascript" src="//static/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="//static/js/bootstrap.min.js"></script> -->
+
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript" src="//static/js/index.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai_sublime.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/railscasts.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai.min.css"> -->
+	<!-- <script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/languages/dos.min.js"></script> -->
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?12d2f5b556fafe71819af97b2ec2c5e8";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+</head>
+
+ <!--  <body data-spy="scroll" data-target="#myAffix"> -->
+  <body>
+
+    <header>
+
+<!-- navbar -->
+  <nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="//">开源实验室</a>
+      <p class="navbar-text">无论何时，请保持学者的谦逊与宽容</p>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" align="right">
+      <ul class="nav navbar-nav navbar-right">
+
+        <li>
+        
+        <a href="//column"><span class="glyphicon glyphicon-th-large"></span> 专栏</a></li>
+
+        <li>
+        
+        <a href="//"><span class="glyphicon glyphicon-th-large"></span> 博客</a></li>
+        
+        <li>
+        
+        <a href="//works"><span class="glyphicon glyphicon-play"></span> 作品</a></li>
+
+        <li>
+        
+        <a href="//about"><span class="glyphicon glyphicon-heart"></span> 关于</a></li>
+
+        <li>
+        
+        <a href="//donate"><span class="glyphicon glyphicon-heart"></span> 感谢</a></li>
+
+        
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+</header>
+
+    <div id="main" class="container main">
+      <div class="row">
+  <div id="myArticle" class="col-sm-9">
+    <div class="post-area post">
+      <header align="center">
+        <h1>KJBitmap与KJHttp的深度用法</h1>
+        <p>
+          <h2>2015-09-24</h2>
+          
+          
+        </p>
+      </header>
+      <hr>
+      <article id="page">
+        <h3>摘要</h3>
+        本文原创，转载请注明地址：<a href="http://kymjs.com/code/2015/09/24/01">http://kymjs.com/code/2015/09/24/01</a><br>
+        <!-- 本博客客户端下载【<a href="http://www.kymjs.com/app">请点击</a>】<br> -->
+        这篇文章是对KJFrameForAndroid使用的一个深入学习<br><br>
+        <ul id="markdown-toc">
+  <li><a href="#section">建造者模式引入</a>    <ul>
+      <li><a href="#section-1">框架源码</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-2">小心这些坑</a></li>
+  <li><a href="#kjhttp">更多的KJHttp使用方法</a>    <ul>
+      <li><a href="#https">https的支持</a></li>
+      <li><a href="#android-60">有关Android 6.0的兼容</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-3">你的意见</a></li>
+</ul>
+
+<p>之前写过一些有关KJFrame的基础用法，<a href="http://www.kymjs.com/code/2015/03/25/01/">KJBitmap使用方法</a>，<a href="http://www.kymjs.com/code/2015/05/12/01/">KJHttp使用讲解</a>，<a href="http://www.kymjs.com/code/2015/05/10/01/">使用框架帮助Activity规范化</a>，通过这几篇博客，我们已经可以基本满足使用KJFrame开发APP了。 <br />
+接下来，今天我们要讲的是更深入的自定义使用方法。 </p>
+
+<h3 id="section">建造者模式引入</h3>
+<p>从KJFrame的2.249版本以来，在KJBitmap与KJHttp中提供了一种全新的构建方法——建造者模式(说是全新其实只是相对历史版本来说，毕竟建造者模式并不是什么新概念)。之所以会使用这种模式，其实是因为有使用者反馈说通过函数重载的形式，要记忆太多方法参数，有时可能还会由于参数记错而调用错函数，所以为了避免这种问题，帮助大家更好的使用，KJFrameForAndroid提供了建造者模式来构建。  <br />
+首先来讲讲建造者模式是怎么实现的。</p>
+
+<p>你可以在对象中创建一个能帮助你构建出这个对象的子类。它使用了可变语句，但是一旦你调用了build，它就会提供给你一个不可变的对象。
+想象一下我们要有一个更加复杂的 DataHolder。针对它的构建器看起来可能像是下面这样：</p>
+
+<div class="highlight"><pre><code class="java"> 
+    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">ComplicatedDataHolder</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">data</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">num</span><span class="o">;</span>
+    <span class="c1">// lots more fields and a constructor</span>
+ 
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Builder</span> <span class="o">{</span>
+        <span class="kd">private</span> <span class="n">String</span> <span class="n">data</span><span class="o">;</span>
+        <span class="kd">private</span> <span class="kt">int</span> <span class="n">num</span><span class="o">;</span>
+ 
+        <span class="kd">public</span> <span class="n">Builder</span> <span class="nf">data</span><span class="o">(</span><span class="n">String</span> <span class="n">data</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">;</span>
+            <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+        <span class="o">}</span>
+ 
+        <span class="kd">public</span> <span class="n">Builder</span> <span class="nf">num</span><span class="o">(</span><span class="kt">int</span> <span class="n">num</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">num</span> <span class="o">=</span> <span class="n">num</span><span class="o">;</span>
+            <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+        <span class="o">}</span>
+ 
+        <span class="kd">public</span> <span class="n">ComplicatedDataHolder</span> <span class="nf">build</span><span class="o">()</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nf">ComplicatedDataHolder</span><span class="o">(</span><span class="n">data</span><span class="o">,</span> <span class="n">num</span><span class="o">);</span> <span class="c1">// etc</span>
+        <span class="o">}</span>  
+    <span class="o">}}</span>
+</code></pre></div>
+
+<p>然后这样去使用它：</p>
+
+<div class="highlight"><pre><code class="java"> 
+    <span class="kd">final</span> <span class="n">ComplicatedDataHolder</span> <span class="n">cdh</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ComplicatedDataHolder</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
+      <span class="o">.</span><span class="na">data</span><span class="o">(</span><span class="s">&quot;set this&quot;</span><span class="o">)</span>
+      <span class="o">.</span><span class="na">num</span><span class="o">(</span><span class="mi">523</span><span class="o">)</span>
+      <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+</code></pre></div>
+
+<h4 id="section-1">框架源码</h4>
+<p>那么在KJBitmap中（<a href="https://github.com/kymjs/KJFrameForAndroid/blob/master/KJFrame/kjframe/src/main/java/org/kymjs/kjframe/KJBitmap.java">查看源码实现</a>)，我们可以这样去显示一张图片:</p>
+
+<div class="highlight"><pre><code class="java"> 
+    <span class="c1">//让imageview控件去显示网络图片http://xxx.jpg</span>
+    <span class="k">new</span> <span class="n">KJBitmap</span><span class="o">.</span><span class="na">Build</span><span class="o">().</span><span class="na">view</span><span class="o">(</span><span class="n">imageview</span><span class="o">).</span><span class="na">imageUrl</span><span class="o">(</span><span class="s">&quot;http://xxx.jpg&quot;</span><span class="o">).</span><span class="na">dispay</span><span class="o">();</span>
+    <span class="c1">//如果你需要指定宽高，也很容易，只需要继续调用构建就行了</span>
+    <span class="k">new</span> <span class="n">KJBitmap</span><span class="o">.</span><span class="na">Build</span><span class="o">().</span><span class="na">view</span><span class="o">(</span><span class="n">imageview</span><span class="o">).</span><span class="na">imageUrl</span><span class="o">(</span><span class="s">&quot;http://xxx.jpg&quot;</span><span class="o">).</span><span class="na">width</span><span class="o">(</span><span class="mi">480</span><span class="o">).</span><span class="na">height</span><span class="o">(</span><span class="mi">800</span><span class="o">).</span><span class="na">dispay</span><span class="o">();</span>
+</code></pre></div>
+
+<p>当然，为了兼容使用旧版本开发的项目，我们依旧会保留原重载的display()，只是会添加过时注解。 <br />
+同样的，在KJHttp中也加入了建造者模式去发起网络请求（<a href="https://github.com/kymjs/KJFrameForAndroid/blob/master/KJFrame/kjframe/src/main/java/org/kymjs/kjframe/KJHttp.java">查看源码</a>），我们可以这样去发起一个请求:</p>
+
+<div class="highlight"><pre><code class="java"> 
+    <span class="k">new</span> <span class="n">KJHttp</span><span class="o">.</span><span class="na">Build</span><span class="o">().</span><span class="na">url</span><span class="o">(</span><span class="s">&quot;http://xxx&quot;</span><span class="o">).</span><span class="na">callback</span><span class="o">(</span><span class="k">new</span> <span class="n">HttpCallback</span><span class="o">(){</span>
+        <span class="n">onSuccess</span><span class="o">()</span><span class="c1">//自行实现</span>
+    <span class="o">}).</span><span class="na">request</span><span class="o">();</span>
+    <span class="c1">//默认的请求是GET发起的FORM请求，当然也可以配置成POST，以及JSON参数的请求，同时也可以设置是否启用缓存</span>
+    <span class="k">new</span> <span class="n">KJHttp</span><span class="o">.</span><span class="na">Build</span><span class="o">().</span><span class="na">url</span><span class="o">(</span><span class="s">&quot;http://xxx&quot;</span><span class="o">).</span>
+    <span class="n">httpMethod</span><span class="o">(</span><span class="n">HttpMethod</span><span class="o">.</span><span class="na">POST</span><span class="o">).</span><span class="na">contentType</span><span class="o">(</span><span class="n">ContentType</span><span class="o">.</span><span class="na">JSON</span><span class="o">).</span><span class="na">useCache</span><span class="o">(</span><span class="kc">true</span><span class="o">).</span><span class="na">params</span><span class="o">(</span><span class="n">httpparams</span><span class="o">).</span><span class="na">callback</span><span class="o">(</span><span class="k">new</span> <span class="n">HttpCallback</span><span class="o">(){</span>
+        <span class="n">onSuccess</span><span class="o">()</span><span class="c1">//自行实现</span>
+    <span class="o">}).</span><span class="na">request</span><span class="o">();</span>
+</code></pre></div>
+
+<h3 id="section-2">小心这些坑</h3>
+<p>Q：为什么有些时候用KJBitmap加载全屏图片的时候会有模糊的问题。 <br />
+A：首先再跟大家讲一些KJBitmap的原理：框架会自动根据控件的大小去判断应该加载多大的图片，但是有些时候我们没办法获取到控件的大小（例如在ListView中，或控件还没有显示出来的时候）此时框架会自动以屏幕宽高的一半来作为图片的宽高，但当你的图片比屏幕宽高一半要大的时候，就会变模糊了。  <br />
+解决办法很简单，只需要通过重载方法（或我们新提供的建造者方法）给图片手动设置正确的宽高就可以了。例如<code>kjb.display(view,url,480,800);</code>   </p>
+
+<p>Q：为什么我使用KJHttp的post方法时，发生了数组下标溢出异常。  <br />
+A：又是理论：在Http请求中，post请求在理论上来说是必须传参数的，如果不传参数就应该使用get方法。但是在实际开发中，很多朋友反应后台服务端开发者荒唐的将一切请求都用post去做，迫不得已。  <br />
+解决办法：在过去我们可以手动传递一个无用参数，或自己new一个FromRequest()并指定使用POST请求。当然最新的版本为大家考虑了这点，你无需再为你坑爹的后台去额外费大脑费时间了，为空就传个空的params过去吧，框架已经为你判断了。    </p>
+
+<h3 id="kjhttp">更多的KJHttp使用方法</h3>
+
+<h4 id="https">https的支持</h4>
+<p>在过去，对于https默认是不信任任何网站证书，从2.248版本以后，我们设置了默认的信任任何网站的证书。虽然这听起来没有任何改变，但是却为很多小白型开发者提供了很大的帮助，可以减轻很多时间去搜去写了(我们的口号就是用最少的代码实现最多的功能)。     <br />
+当然，信任所有证书也并不是最好的解决办法。你可以使用   </p>
+
+<div class="highlight"><pre><code class="java"> 
+      <span class="n">httpconfig</span> <span class="o">=</span> <span class="k">new</span> <span class="n">httpconfig</span><span class="o">();</span>
+      <span class="n">httpconfig</span><span class="o">.</span><span class="na">mNetwork</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Network</span><span class="o">(</span><span class="n">httpStackFactory</span><span class="o">(</span><span class="s">&quot;在这里传你的ssl证书&quot;</span><span class="o">));</span>
+      <span class="n">kjhttp</span> <span class="o">=</span> <span class="k">new</span> <span class="n">kjhttp</span><span class="o">(</span><span class="n">httpconfig</span><span class="o">);</span>
+</code></pre></div>
+
+<h4 id="android-60">有关Android 6.0的兼容</h4>
+<p>框架目前不能兼容6.0，你有两个解决办法 <br />
+1、静静等待，对于6.0的兼容将会在半个月内完成  <br />
+2、通过OkHttp，引入OkHttp的包，并复制（再次感谢猫猫提供编写的这个类）<a href="http://kymjs.com/resource/OkHttpStack.java">OkHttpStack.java</a>到你的项目中，并使用  </p>
+
+<div class="highlight"><pre><code class="java">  
+      <span class="n">httpconfig</span> <span class="o">=</span> <span class="k">new</span> <span class="n">httpconfig</span><span class="o">();</span>
+      <span class="n">httpconfig</span><span class="o">.</span><span class="na">mNetwork</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Network</span><span class="o">(</span><span class="k">new</span> <span class="n">OkHttpStack</span><span class="o">());</span>
+      <span class="n">kjhttp</span> <span class="o">=</span> <span class="k">new</span> <span class="n">kjhttp</span><span class="o">(</span><span class="n">httpconfig</span><span class="o">);</span>
+</code></pre></div>
+
+<h3 id="section-3">你的意见</h3>
+<p>如果你有什么新的建议可以在我的<a href="http://kymjs.com/tweet">博客留言板http://kymjs.com/tweet</a>，或在GitHub项目<a href="https://github.com/kymjs/KJFrameForAndroid/issues">Issue</a>中提出，对于合适的建议，我们将会采纳并实现。   <br />
+感谢各位的支持。</p>
+
+        <br>
+        <div class="support-author">
+          <p>如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作！</p>
+            <a href="/donate"><button class="btn btn-sm btn-primary js-toggler-target" title="Follow kymjs">¥ 打赏支持</button> </a>
+        </div>
+
+        <div align="center"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-4706145830093249"
+               data-ad-slot="1547827239"
+               data-ad-format="auto"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+      </article>
+      <hr>
+    </div>
+    <div class="post-area post comment">
+      <!-- 多说评论框 start -->
+      
+      <div class="ds-thread" data-thread-key="/code/2015/09/24/01" data-title="KJBitmap与KJHttp的深度用法" data-image="http://www.kymjs.com/image/logo_s.jpg" data-url="http://www.kymjs.com/code/2015/09/24/01"></div>
+      
+      <!-- 多说评论框 end -->
+    </div>
+  </div>
+
+  <div id="content" class="col-sm-3">
+    <div id="myAffix" class="shadow-bottom-center hidden-xs" >
+      <div class="categories-list-header" align="center">
+        支持我请点击右上角的
+        <a href="https://github.com/kymjs"><button class="btn btn-sm btn-primary js-toggler-target" title="Follow kymjs">Follow</button> </a>
+      </div>
+    <!--  <div class="content-text"></div> -->
+    </div>
+
+    <p>
+      
+    </p>
+
+    <div id="myAffix" class="shadow-bottom-center hidden-xs" >
+
+      <div class="categories-list-header" align="center">
+        <a href="https://github.com/kymjs/kymjs.github.io/blob/master/_posts/2015-09-24-01.md"> - -> <font color="#FF0000">文章纠错</font> <- - </a>
+      </div>
+      
+    <!--
+    <div class="categories-list-header" align="center">
+        Android 的 MVP 架构
+        <a href="https://github.com/kymjs/TheMVP"><button class="btn btn-sm btn-primary js-toggler-target" title="Star TheMVP">Star</button> </a>
+      </div>
+    -->
+    </div>
+
+    <p>
+      
+    </p>
+    <div class="shadow-corner-curl hidden-xs">
+  <br />
+  <ul class="list-unstyled">
+      <a href="http://www.kymjs.com/about"><img src="http://www.kymjs.com/images/kymjs_round.png" alt="kymjs张涛" style="width:80%">
+      </a>
+  </ul>
+
+  <span><a href="http://www.kymjs.com/about">
+  <center><font color="#000000">kymjs张涛</font></center>
+  </a></span><br>
+
+  <ul class="list-unstyled">
+    &nbsp;&nbsp;&nbsp;&nbsp;Android移动开发工程师，《<a href="https://github.com/kymjs/KJFrameForAndroid">KJFrameForAndroid</a>》开发框架作者。爱看书，爱敲码，善于交流，乐于分享。曾担任电影《<a href="http://baike.baidu.com/view/8784406.htm">天籁：一万年以后</a>》新媒体产品经理。
+
+    <hr width="90%" style="border:1px dashed black; height:1px">
+
+    <a href="http://www.kymjs.com/"></a><font color="red"><b>QQ交流群：</b></font>
+    <p><a href="http://www.kymjs.com/" target="_blank"></a><a href="http://jq.qq.com/?_wv=1027&amp;k=UH2fnF" target="_blank"><font color="blue"><b>257053751</b></font>（1群，2000人）</a></p>
+    <p><a href="http://jq.qq.com/?_wv=1027&amp;k=P9EObD" target="_blank"><font color="blue"><b>201055521</b></font>（2群，1000人）</a></p>
+    <font color="red"><b>我的邮箱：</b></font><br>
+    <p><b>kymjs123@gmail.com</b></p>
+    <font color="red"><b>微信公众号：</b></font><br>
+    <p><b>Android技术分享 </b></p>
+    <img src="/images/qrcode.jpg" height="180" width="180" alt="Android技术分享" />
+    <br />
+  </ul>
+  <br />
+</div>
+ 
+    <p>
+      
+    </p>
+    <div class="shadow-corner-curl hidden-xs">
+    <div class="categories-list-header" align="center">
+    	本周热门
+    </div>
+
+	<ul class="list-unstyled">
+		<br />
+		<li><a href="/column/resourcecode.html"><font color="#EE0000">【精】</font>EventBus 源码研读系列</a></li>  
+		<li><a href="/code/2015/10/18/01/">支持 gif 的图片预览控件</a></li>
+		<li><a href="/code/2015/06/06/01/">Android 流式布局实现</a></li>
+		<li><a href="/code/2015/11/09/01/"><font color="#EE0000">【精】</font>用 MVP 架构开发 Android 应用</a></li>
+		<li><a href="/code/2015/05/26/01/">Android 夜间模式实现</a></li>
+		<li><a href="/stickies/2015/04/27/01/">我的创业方案——都市书吧</a></li>
+		<li><a href="/code/2015/04/01/01/"><font color="#EE0000">【精】</font>致那些正在迷茫期的开发者</a></li>	
+		<br />
+	</ul>
+</div>
+
+    <p>
+
+    </p>
+    <div class="shadow-corner-curl hidden-xs">
+	<div class="categories-list-header" align="center">
+        新浪微博
+    </div> 
+	<iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=1&ptype=1&speed=0&skin=5&isTitle=0&noborder=1&isWeibo=1&isFans=1&uid=3025443500&verifier=c1f8031e&colors=f6f6fc,f6f6fc,666666,0082cb,ecfbfd&dpc=1"></iframe>
+ </div>   
+    <p>
+
+    </p>
+    <div class="shadow-corner-curl hidden-xs">
+    <div class="categories-list-header" align="center">
+      为你推荐
+    </div>   
+
+    <ul class="list-unstyled">
+      <br />
+      <div align="center">
+        <li><a href="https://github.com/kymjs?tab=repositories">我的GitHub</a></li> 
+        <li><a href="/works">开源实验室</a></li>
+        <li><a href="http://p.codekk.com/">CodeKK</a></li>
+        <li><a href="http://www.androidweekly.cn/">Android开发技术周报</a></li>
+        <li><a href="http://androiddevtools.cn/">AndroidDevTools</a></li>
+      </div>
+      <br />
+    </ul>
+</div>
+  
+  </div>
+</div>
+  </div>
+    
+    <div id="top" data-toggle="tooltip" data-placement="left" title="回到顶部">
+      <a href="javascript:;">
+        <div class="arrow"></div>
+        <div class="stick"></div>
+      </a>
+    </div>
+
+    <footer class="navbar navbar-inverse">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 navbar-text">
+        <span> kymjs张涛的开源实验室 </span>
+        <span class="point"> · </span>
+        <a href="mailto:kymjs123@gmail.com"><span class="glyphicon glyphicon-envelope"></span> kymjs123@gmail.com</a>
+        <span class="point"> · </span>
+        
+          
+          <a href="https://github.com/kymjs">
+            <span class="icon">
+              <svg viewBox="0 0 16 16">
+                <path fill="#aaa" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            Github
+            <!-- <span>kymjs</span> -->
+          </a>
+          
+          
+          <span class="point"> · </span>
+          <span><a href="//feed.xml">RSS</a></span>
+          <span class="point"> · </span>
+          <span>站务联系：766136833</span>
+          <span class="point"> · </span>
+          <span>Powered by Jekyll</span>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:"kymjs"};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+
+
+<!-- 在新窗口中打开 -->
+  <script type="text/javascript">
+    function addBlankTargetForLinks () {
+      $('a[href^="http"]').each(function(){
+          $(this).attr('target', '_blank');
+      });
+    }
+    //每次在有DOM插入时触发
+    $(document).bind('DOMNodeInserted', function(event) {
+      addBlankTargetForLinks();
+    });
+  </script>
+  </body>
+</html>

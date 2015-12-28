@@ -31,6 +31,11 @@ layout: page-a4
     <td><b>赠言</b></td>
     </tr>
     <tr>
+    <td>Seewhy</td>
+    <td>￥10</td>
+    <td></td>
+    </tr>
+    <tr>
     <td>李想</td>
     <td>￥20</td>
     <td>现在少点，会一直支持的</td>

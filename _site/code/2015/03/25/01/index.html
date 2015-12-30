@@ -374,7 +374,7 @@ kjb.display(view, url, loadimage);<br />
       (function() {
         var ds = document.createElement('script');
         ds.type = 'text/javascript';ds.async = true;
-        ds.src = '//kymjs.com/assets/js/embed_ua.js';
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//kymjs.com/assets/js/embed_ua.js';
         ds.charset = 'UTF-8';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
       })();

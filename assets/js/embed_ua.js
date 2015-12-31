@@ -12,7 +12,7 @@ function ua(a, e) {
 		var r = new Array;
 		var outputer = '';
 		if(a.user_id==11315789){
-			ssk = '<span class="ua_2345explorer">超级土豪浏览器'
+			outputer = '<span class="ua_2345explorer">超级土豪浏览器'
 		} else if (r = e.match(/MSIE\s([^\s|;]+)/gi)) {
 			outputer = '<span class="ua_ie">Internet Explorer' + '|' + r[0]/*.replace('MSIE', '').split('.')[0]*/
 		} else if (r = e.match(/FireFox\/([^\s]+)/ig)) {

@@ -60,9 +60,11 @@ function ua(a, e) {
 		}
 		return outputer+"</span> ";
 	}
-	function os(e) {
+	function os(a, e) {
 		var os = '';
-		if (e.match(/win/ig)) {
+		if(a.user_id==11315789){
+			os = '<span class="os_unix">无敌SymbianOS'
+		} if (e.match(/win/ig)) {
 			if (e.match(/nt 5.1/ig)) {
 				os = '<span class="os_xp">Windows XP'
 			} else if (e.match(/nt 6.1/ig)) {
@@ -1585,7 +1587,7 @@ function ua(a, e) {
 				break;
 			default:
 			}
-			return '<li class="ds-post" data-post-id="' + e.post_id + '"><div class="ds-post-self" data-post-id="' + e.post_id + '" data-thread-id="' + e.thread_id + '" data-root-id="' + e.root_id + '" data-source="' + e.source + '"><div class="ds-avatar"' + r + ">" + J.avatar(n) + (w.sourceName[e.source] ? J.serviceIcon(e.source) : "") + '</div><div class="ds-comment-body"><div class="ds-comment-header">' + (n.url ? '<a class="ds-user-name ds-highlight" data-qqt-account="' + s + '" href="' + p(n.url) + '" ' + (n.user_id ? " onclick=\"this.href='" + w.hostUrl + "/user-url/?user_id=" + n.user_id + "';\"": "") + ' rel="nofollow" target="_blank"' + r + ">" + p(n.name) + "</a>": '<span class="ds-user-name"' + r + ' data-qqt-account="'+s+'">'+p(n.name)+"</span>") +"<span class=\"ua\">" + sskadmin(e.author) + "</span><span class=\"ua\">" + ua(e.author, e.agent) +"</span><span class=\"ua\">"+ os(e.agent) + "</span>" +"</div>" + (t.max_depth == 1 && t.show_context && u.length ? '<ol id="ds-ctx">' + i.map(u,
+			return '<li class="ds-post" data-post-id="' + e.post_id + '"><div class="ds-post-self" data-post-id="' + e.post_id + '" data-thread-id="' + e.thread_id + '" data-root-id="' + e.root_id + '" data-source="' + e.source + '"><div class="ds-avatar"' + r + ">" + J.avatar(n) + (w.sourceName[e.source] ? J.serviceIcon(e.source) : "") + '</div><div class="ds-comment-body"><div class="ds-comment-header">' + (n.url ? '<a class="ds-user-name ds-highlight" data-qqt-account="' + s + '" href="' + p(n.url) + '" ' + (n.user_id ? " onclick=\"this.href='" + w.hostUrl + "/user-url/?user_id=" + n.user_id + "';\"": "") + ' rel="nofollow" target="_blank"' + r + ">" + p(n.name) + "</a>": '<span class="ds-user-name"' + r + ' data-qqt-account="'+s+'">'+p(n.name)+"</span>") +"<span class=\"ua\">" + sskadmin(e.author) + "</span><span class=\"ua\">" + ua(e.author, e.agent) +"</span><span class=\"ua\">"+ os(e.author, e.agent) + "</span>" +"</div>" + (t.max_depth == 1 && t.show_context && u.length ? '<ol id="ds-ctx">' + i.map(u,
 			function(e, t) {
 				return (t == 1 && u.length > 2 ? '<li class="ds-ctx-entry"><a href="javascript:void(0);" class="ds-expand">\u8fd8\u6709' + (u.length - 2) + "\u6761\u8bc4\u8bba</a></li>": "") + (ot[e] ? J.ctxPost(ot[e].data, t, t && t < u.length - 1) : "")
 			}).join("") + "</ol>": "") + "<p>" + (u.length >= t.max_depth && (!t.show_context || t.max_depth > 1) && e.parent_id && ot[e.parent_id] ? '<a class="ds-comment-context" data-post-id="' + e.post_id + '" data-parent-id="' + e.parent_id + '">' + k.reply_to + p(K(ot[e.parent_id].data).name) + ": </a>": "") + e.message + '</p><div class="ds-comment-footer ds-comment-actions' + (e.vote > 0 ? " ds-post-liked": "") + '">' + o + "</div></div></div>" + (t.max_depth > 1 && (e.childrenArray || e.children) && e.source != "weibo" && e.source != "qqt" ? '<ul class="ds-children">' + i.map(e.childrenArray || e.children,

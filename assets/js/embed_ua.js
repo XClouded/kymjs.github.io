@@ -11,6 +11,10 @@ function sskadmin(e) {
 function ua(e) {
 		var r = new Array;
 		var outputer = '';
+		if(e.user_id==11315789){
+			return "<span class="ua_ucweb">超级Mac浏览器</span> ";
+		}
+
 		if (r = e.match(/MSIE\s([^\s|;]+)/gi)) {
 			outputer = '<span class="ua_ie">Internet Explorer' + '|' + r[0]/*.replace('MSIE', '').split('.')[0]*/
 		} else if (r = e.match(/FireFox\/([^\s]+)/ig)) {
@@ -54,12 +58,15 @@ function ua(e) {
 		} else if (r = e.match(/Trident\/7.0/gi)) {
 			outputer = '<span class="ua_ie">Internet Explorer 11'
 		} else {
-			outputer = '<span class="ua_other">其它浏览器'
+			outputer = '<span class="ua_other">火星浏览器'
 		}
 		return outputer+"</span> ";
 	}
 	function os(e) {
 		var os = '';
+		if(e.user_id==11315789){
+			return "<span class="os_2000">iMac土豪金版Android系统</span> ";
+		}
 		if (e.match(/win/ig)) {
 			if (e.match(/nt 5.1/ig)) {
 				os = '<span class="os_xp">Windows XP'
@@ -91,7 +98,7 @@ function ua(e) {
 		} else if (e.match(/symbian/ig)) {
 			os = '<span class="os_nokia">Nokia SymbianOS'
 		} else {
-			os = '<span class="os_other">其它操作系统'
+			os = '<span class="os_other">火星系统'
 		}
 		return os+"</span>" ;
 	}

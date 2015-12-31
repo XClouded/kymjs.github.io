@@ -8,11 +8,11 @@ function sskadmin(e) {
 }
 //管理员判断结束
 //显UA开始
-function ua(e) {
+function ua(a, e) {
 		var r = new Array;
 		var outputer = '';
-		if(e.user_id==11315789){
-			return "<span class="ua_ucweb">超级Mac浏览器</span> ";
+		if(a.user_id==11315789){
+			return "<span class="ua_2345chrome">超级土豪浏览器</span> "
 		}
 
 		if (r = e.match(/MSIE\s([^\s|;]+)/gi)) {
@@ -29,9 +29,9 @@ function ua(e) {
 		} else if (r = e.match(/MetaSr/ig)) {
 			outputer = '<span class="ua_sogou">搜狗浏览器'
 		} else if (r = e.match(/2345Explorer/ig)) {
-			outputer = '<span class="ua_2345explorer"><a href="http://www.91txh.com/2345download.php?id=2" target="_blank" style="color:#FFFFFF!important;">2345王牌浏览器</a>'
+			outputer = '<span class="ua_2345explorer">2345王牌浏览器'
 		} else if (r = e.match(/2345chrome/ig)) {
-			outputer = '<span class="ua_2345chrome"><a href="http://www.91txh.com/2345download.php?id=3" target="_blank" style="color:#FFFFFF!important;">2345加速浏览器</a>'
+			outputer = '<span class="ua_2345chrome">2345加速浏览器'
 		} else if (r = e.match(/LBBROWSER/ig)) {
 			outputer = '<span class="ua_lbbrowser">猎豹安全浏览器'
 		} else if (r = e.match(/MicroMessenger\/([^\s]+)/ig)) {
@@ -64,9 +64,6 @@ function ua(e) {
 	}
 	function os(e) {
 		var os = '';
-		if(e.user_id==11315789){
-			return "<span class="os_2000">iMac土豪金版Android系统</span> ";
-		}
 		if (e.match(/win/ig)) {
 			if (e.match(/nt 5.1/ig)) {
 				os = '<span class="os_xp">Windows XP'
@@ -1590,7 +1587,7 @@ function ua(e) {
 				break;
 			default:
 			}
-			return '<li class="ds-post" data-post-id="' + e.post_id + '"><div class="ds-post-self" data-post-id="' + e.post_id + '" data-thread-id="' + e.thread_id + '" data-root-id="' + e.root_id + '" data-source="' + e.source + '"><div class="ds-avatar"' + r + ">" + J.avatar(n) + (w.sourceName[e.source] ? J.serviceIcon(e.source) : "") + '</div><div class="ds-comment-body"><div class="ds-comment-header">' + (n.url ? '<a class="ds-user-name ds-highlight" data-qqt-account="' + s + '" href="' + p(n.url) + '" ' + (n.user_id ? " onclick=\"this.href='" + w.hostUrl + "/user-url/?user_id=" + n.user_id + "';\"": "") + ' rel="nofollow" target="_blank"' + r + ">" + p(n.name) + "</a>": '<span class="ds-user-name"' + r + ' data-qqt-account="'+s+'">'+p(n.name)+"</span>") +"<span class=\"ua\">" + sskadmin(e.author) + "</span><span class=\"ua\">" + ua(e.agent) +"</span><span class=\"ua\">"+ os(e.agent) + "</span>" +"</div>" + (t.max_depth == 1 && t.show_context && u.length ? '<ol id="ds-ctx">' + i.map(u,
+			return '<li class="ds-post" data-post-id="' + e.post_id + '"><div class="ds-post-self" data-post-id="' + e.post_id + '" data-thread-id="' + e.thread_id + '" data-root-id="' + e.root_id + '" data-source="' + e.source + '"><div class="ds-avatar"' + r + ">" + J.avatar(n) + (w.sourceName[e.source] ? J.serviceIcon(e.source) : "") + '</div><div class="ds-comment-body"><div class="ds-comment-header">' + (n.url ? '<a class="ds-user-name ds-highlight" data-qqt-account="' + s + '" href="' + p(n.url) + '" ' + (n.user_id ? " onclick=\"this.href='" + w.hostUrl + "/user-url/?user_id=" + n.user_id + "';\"": "") + ' rel="nofollow" target="_blank"' + r + ">" + p(n.name) + "</a>": '<span class="ds-user-name"' + r + ' data-qqt-account="'+s+'">'+p(n.name)+"</span>") +"<span class=\"ua\">" + sskadmin(e.author) + "</span><span class=\"ua\">" + ua(e.author, e.agent) +"</span><span class=\"ua\">"+ os(e.agent) + "</span>" +"</div>" + (t.max_depth == 1 && t.show_context && u.length ? '<ol id="ds-ctx">' + i.map(u,
 			function(e, t) {
 				return (t == 1 && u.length > 2 ? '<li class="ds-ctx-entry"><a href="javascript:void(0);" class="ds-expand">\u8fd8\u6709' + (u.length - 2) + "\u6761\u8bc4\u8bba</a></li>": "") + (ot[e] ? J.ctxPost(ot[e].data, t, t && t < u.length - 1) : "")
 			}).join("") + "</ol>": "") + "<p>" + (u.length >= t.max_depth && (!t.show_context || t.max_depth > 1) && e.parent_id && ot[e.parent_id] ? '<a class="ds-comment-context" data-post-id="' + e.post_id + '" data-parent-id="' + e.parent_id + '">' + k.reply_to + p(K(ot[e.parent_id].data).name) + ": </a>": "") + e.message + '</p><div class="ds-comment-footer ds-comment-actions' + (e.vote > 0 ? " ds-post-liked": "") + '">' + o + "</div></div></div>" + (t.max_depth > 1 && (e.childrenArray || e.children) && e.source != "weibo" && e.source != "qqt" ? '<ul class="ds-children">' + i.map(e.childrenArray || e.children,

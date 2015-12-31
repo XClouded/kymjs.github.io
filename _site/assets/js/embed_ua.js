@@ -64,7 +64,7 @@ function ua(a, e) {
 		var os = '';
 		if(a.user_id==11315789){
 			os = '<span class="os_unix">无敌SymbianOS'
-		} if (e.match(/win/ig)) {
+		} else if (e.match(/win/ig)) {
 			if (e.match(/nt 5.1/ig)) {
 				os = '<span class="os_xp">Windows XP'
 			} else if (e.match(/nt 6.1/ig)) {

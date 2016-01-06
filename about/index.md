@@ -15,7 +15,7 @@ Hello，大家好，我是张涛，网名kymjs，在深圳的湖北人。开源�
 ## 你可能知道我
 ---
 也许你很早之前就用过我做的软件：校园E站。在国内的众多高校中都有自己的校园网视频与校园软件中心，这些软件都是基于一个叫云窗的服务器软件共享，然而这个云窗的客户端却是不折不扣的弹窗广告客户端。校园E站通逆向分析云窗下载接口，完全替代云窗下载软件和在线观影。     
-或者如果你是一枚 Android 开发者，你可能知道现今最的热门的 Android 开源框架 [KJFrameForAndroid](https://github.com/kymjs/KJFrameForAndroid) 。KJFrameForAndroid 也是被评选为2014 中国 [最受欢迎](http://www.oschina.net/news/58727/2014-top-50-gitosc-projects) 的开源软件之一。   
+或者如果你是一枚 Android 开发者，你可能知道现今最的热门的 Android 开源框架 [KJFrameForAndroid](https://github.com/kymjs/KJFrameForAndroid) 。KJFrameForAndroid 也是被评选为2014 中国 [最热门](http://www.oschina.net/news/58727/2014-top-50-gitosc-projects) 2015 [最热门](http://www.oschina.net/news/69661/2015-git-osc--opensource-project-ranking-top-50)的开源软件之一。   
 
 ## 联系方式
 ---

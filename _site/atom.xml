@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title><![CDATA[ 开源实验室]]></title>
+    <description><![CDATA[kymjs张涛的开源实验室]]></description>
+    <link><![CDATA[ http://www.kymjs.com/]]></link>
+    <pubDate><![CDATA[2016-01-28]]></pubDate>
+    <lastBuildDate><![CDATA[2016-01-28]]></lastBuildDate>
+    
+      <item>
+        <title><![CDATA[2015年终总结 - 张涛]]></title>
+        <description><![CDATA[就像一个终生跋涉的香客，不停地寻找一座可能根本不存在的神庙，我不知道他寻求的是什么不可思议的涅槃。我只知道，我们中的大多数，苟活一生，却从不曾寻找。我想也许你该停下来，看看你走的路，想想你想要的真实。————Seven凉奈《你的生活，该如何安放》 - 开源实验室]]></description>
+        <recommend></recommend>
+        <image><![CDATA[]]></image>
+        <pubDate><![CDATA[2015-12-22]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/stickies/2015/12/22/01]]></link>
+        
+        <tag><![CDATA[心情随笔]]></tag>
+        
+        
+        <category><![CDATA[stickies]]></category>
+        
+      </item>
+    
+      <item>
+        <title><![CDATA[EventBus源码研读(下) - 张涛]]></title>
+        <description><![CDATA[EventBus 是一款针对Android优化的发布/订阅事件总线。主要功能是替代Intent, Handler, BroadCast 在 Fragment，Activity，Service，线程之间传递消息.优点是开销小，使用方便,可以很大程度上降低它们之间的耦合，使得我们的代码更加简洁，耦合性更低，提升我们的代码质量。 类似的库还有 Otto ,今天就带大家一起研读 EventBus 的源码. - 开源实验室]]></description>
+        <recommend>true</recommend>
+        <image><![CDATA[http://kymjs.com/images/blog_image/20151211_8.png]]></image>
+        <pubDate><![CDATA[2015-12-16]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/code/2015/12/16/01]]></link>
+        
+        <tag><![CDATA[Android技术讲解]]></tag>
+        
+        
+        <category><![CDATA[code]]></category>
+        
+      </item>
+    
+      <item>
+        <title><![CDATA[EventBus源码研读(中) - 张涛]]></title>
+        <description><![CDATA[EventBus 是一款针对Android优化的发布/订阅事件总线。主要功能是替代Intent, Handler, BroadCast 在 Fragment，Activity，Service，线程之间传递消息.优点是开销小，使用方便,可以很大程度上降低它们之间的耦合，使得我们的代码更加简洁，耦合性更低，提升我们的代码质量。 类似的库还有 Otto ,今天就带大家一起研读 EventBus 的源码. - 开源实验室]]></description>
+        <recommend>true</recommend>
+        <image><![CDATA[http://kymjs.com/images/blog_image/20151211_6.png]]></image>
+        <pubDate><![CDATA[2015-12-13]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/code/2015/12/13/01]]></link>
+        
+        <tag><![CDATA[Android技术讲解]]></tag>
+        
+        
+        <category><![CDATA[code]]></category>
+        
+      </item>
+    
+      <item>
+        <title><![CDATA[EventBus源码研读(上) - 张涛]]></title>
+        <description><![CDATA[本文总共分三部分，从源码角度分析了 EventBus 库。以及介绍了其内部实现注册、发送、响应、取消注册的原理。   - 开源实验室]]></description>
+        <recommend>true</recommend>
+        <image><![CDATA[http://www.kymjs.com/images/blog_image/20151211_5.png]]></image>
+        <pubDate><![CDATA[2015-12-12]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/code/2015/12/12/01]]></link>
+        
+        <tag><![CDATA[Android技术讲解]]></tag>
+        
+        
+        <category><![CDATA[code]]></category>
+        
+      </item>
+    
+      <item>
+        <title><![CDATA[记一次 ListView 性能优化过程 - 张涛]]></title>
+        <description><![CDATA[奇葩需求催生创新，记一次对 ListView 的性能优化。（当然，RecyclerView 也是一样）   - 开源实验室]]></description>
+        <recommend>true</recommend>
+        <image><![CDATA[http://www.kymjs.com/images/blog_image/20151125_1.jpg]]></image>
+        <pubDate><![CDATA[2015-11-26]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/code/2015/11/26/01]]></link>
+        
+        <tag><![CDATA[Android技术讲解]]></tag>
+        
+        
+        <category><![CDATA[code]]></category>
+        
+      </item>
+    
+      <item>
+        <title><![CDATA[聊聊 Apache 开源协议 - 张涛]]></title>
+        <description><![CDATA[用一句话概括 Apache License 就是，你可以用这代码，但是如果开源你必须保留我写的声明；你可以改我的代码，但是如果开源你必须写清楚你改了哪些；你可以加新的协议要求，但不能与我所公布的协议要求产生冲突；你用这代码干什么我不管，但是你不能让我承担任何责任。 - 开源实验室]]></description>
+        <recommend></recommend>
+        <image><![CDATA[http://www.kymjs.com/images/blog_image/20151121_1.jpg]]></image>
+        <pubDate><![CDATA[2015-11-21]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/manager/2015/11/21/01]]></link>
+        
+        <tag><![CDATA[知识点积累]]></tag>
+        
+        
+        <category><![CDATA[manager]]></category>
+        
+      </item>
+    
+      <item>
+        <title><![CDATA[生日快乐 - 张涛]]></title>
+        <description><![CDATA[每个人都会沉迷在自己的戏里，就看什么时候观众会看不下去而叫醒你。——《说故事的人》 - 开源实验室]]></description>
+        <recommend></recommend>
+        <image><![CDATA[]]></image>
+        <pubDate><![CDATA[2015-11-13]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/stickies/2015/11/13/01]]></link>
+        
+        <tag><![CDATA[心情随笔]]></tag>
+        
+        
+        <category><![CDATA[stickies]]></category>
+        
+      </item>
+    
+      <item>
+        <title><![CDATA[用MVP架构开发Android应用 - 张涛]]></title>
+        <description><![CDATA[怎样从架构级别去搭建一个APP，怎样让他应对日益更改的界面与业务逻辑？今天为大家讲述一种在Android上实现MVP模式的方法。   - 开源实验室]]></description>
+        <recommend>true</recommend>
+        <image><![CDATA[http://www.kymjs.com/images/blog_image/20151029_1.png]]></image>
+        <pubDate><![CDATA[2015-11-09]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/code/2015/11/09/01]]></link>
+        
+        <tag><![CDATA[Android技术讲解]]></tag>
+        
+        
+        <category><![CDATA[code]]></category>
+        
+      </item>
+    
+      <item>
+        <title><![CDATA[支持gif的图片预览控件 - 张涛]]></title>
+        <description><![CDATA[最近实现了一个gif图片和普通图片浏览的功能，支持双击缩放，单机退出。同时可以选择使用jni的形式去高效加载gif或者更更精简的(仅2个类)gif控件 - 开源实验室]]></description>
+        <recommend></recommend>
+        <image><![CDATA[http://www.kymjs.com/image/kjgallery/kjgallery.gif]]></image>
+        <pubDate><![CDATA[2015-10-18]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/code/2015/10/18/01]]></link>
+        
+        <tag><![CDATA[Android技术讲解]]></tag>
+        
+        
+        <category><![CDATA[code]]></category>
+        
+      </item>
+    
+      <item>
+        <title><![CDATA[RecyclerView的通用适配器，和滚动时不加载图片的封装 - 张涛]]></title>
+        <description><![CDATA[介绍一个通用的Adapter实现，和对RecyclerView滚动时不加载图片的封装。 - 开源实验室]]></description>
+        <recommend>true</recommend>
+        <image><![CDATA[]]></image>
+        <pubDate><![CDATA[2015-10-11]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/code/2015/10/11/01]]></link>
+        
+        <tag><![CDATA[Android技术讲解]]></tag>
+        
+        
+        <category><![CDATA[code]]></category>
+        
+      </item>
+    
+  </channel>
+</rss>

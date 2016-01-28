@@ -1,4 +1,6 @@
----layout: null---
+---
+layout: null
+---
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     {% for post in site.posts limit:60 %}
     <url>

@@ -16,6 +16,13 @@ duoshuo_username: kymjs
 permalink: /:categories/:year/:month/:day/:title 
 
 # Build settings
+# markdown: redcarpet
+# permalink: pretty
+# highlighter: pygments
+# paginate: 3
+# redcarpet:
+#     extensions: [ "hard_wrap","autolink", "tables", "strikethrough", "superscript", "with_toc_data", "highlight", "prettify","no_intra_emphasis"]
+
 markdown: kramdown
 
 kramdown:

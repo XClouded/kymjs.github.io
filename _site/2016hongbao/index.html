@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>2016 猜迷赢红包|开源实验室-张涛</title>
+	<meta name="description" content="Android记得2015年做了一个猜数字赢红包的活动，结果好多人都各种超神的秒答，又一次还找出了题目的一个 BUG 。">
+
+	<meta name="keyword" content="Android,2016 猜迷赢红包,张涛,开源实验室">
+	
+	<link rel="canonical" href="http://www.kymjs.com/2016hongbao/index.html">
+	<link rel="alternate" type="application/rss+xml" title="开源实验室" href="http://www.kymjs.com/feed.xml" />
+	
+	<!-- <link rel="stylesheet" href="//css/main.css"> -->
+
+	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/fontawesome/4.2.0/css/font-awesome.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="//static/css/bootstrap.min.css"> -->
+	
+	<link rel="stylesheet" type="text/css" href="/static/css/index.css">
+	
+	<!-- <script type="text/javascript" src="//static/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="//static/js/bootstrap.min.js"></script> -->
+
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript" src="//static/js/index.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai_sublime.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/railscasts.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai.min.css"> -->
+	<!-- <script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/languages/dos.min.js"></script> -->
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?12d2f5b556fafe71819af97b2ec2c5e8";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+</head>
+
+ <!--  <body data-spy="scroll" data-target="#myAffix"> -->
+  <body>
+
+    <header>
+
+<!-- navbar -->
+  <nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="//">张涛-开源实验室</a>
+      <p class="navbar-text">无论何时，请保持学者的谦逊与宽容</p>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" align="right">
+      <ul class="nav navbar-nav navbar-right">
+
+        <li>
+        
+        <a href="//column"><span class="glyphicon glyphicon-th-large"></span> 专栏</a></li>
+
+        <li>
+        
+        <a href="//"><span class="glyphicon glyphicon-th-large"></span> 博客</a></li>
+        
+        <li>
+        
+        <a href="//works"><span class="glyphicon glyphicon-play"></span> 作品</a></li>
+
+        <li>
+        
+        <a href="//about"><span class="glyphicon glyphicon-heart"></span> 关于</a></li>
+
+        <li>
+        
+        <a href="//donate"><span class="glyphicon glyphicon-heart"></span> 感谢</a></li>
+
+        
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+</header>
+
+    <div id="main" class="container main">
+      <div class="row">
+  <div id="myArticle" class="col-sm-9">
+    <div class="post-area post">
+      <header align="center">
+        <h1>2016 猜迷赢红包</h1>
+        <p>
+          <h2></h2>
+          
+          
+        </p>
+      </header>
+      <hr>
+      <article id="page">
+        <h3>前情提要</h3>
+        记得2015年做了一个猜数字赢红包的活动，结果好多人都各种超神的秒答，又一次还找出了题目的一个 BUG 。<br><br>
+        <ul id="markdown-toc">
+  <li><a href="#section">规则</a></li>
+  <li><a href="#section-1">公众号二维码</a></li>
+  <li><a href="#section-2">猜谜开始</a>    <ul>
+      <li><a href="#section-3">第一期</a>        <ul>
+          <li><a href="#section-4">2月1日</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>2015 年新年的时候，在公众号做了一期猜数字赢红包的活动。就是每三天一轮，根据每天的提示猜出数字是什么，然后最快的三个人就有现金红包拿，然后一下子好多人都参与进来了。这么好的一个活动，今年当然要继续。    </p>
+
+<h2 id="section">规则</h2>
+
+<p>2月1日至2月9日，每天在本页会有算法题目或答案提示(更新时间随机)，每天的答案是三到四个 10 以下的正整数。每三天为一轮，你要把三天的(9-12个)数字猜出来，
+关注微信公众号【Android技术分享】小红人，回复你猜出的答案，猜对就能拿到一个 10 元的支付宝红包口令。然后接下来你要做什么就是你的事了。  <br />
+<strong>友情提示：如果你回答晚了，红包就会被别人领走咯~</strong></p>
+
+<h2 id="section-1">公众号二维码</h2>
+
+<p><img src="http://www.kymjs.com/images/qrcode.jpg" alt="Android技术分享" /></p>
+
+<h2 id="section-2">猜谜开始</h2>
+
+<h3 id="section-3">第一期</h3>
+
+<h4 id="section-4">2月1日</h4>
+
+
+        <br>
+        <div class="support-author">
+          <p>如果你有兴趣参与成为赞助商，与我们一起玩游戏，请点击下方按钮！</p>
+            <a href="/about"><button class="btn btn-sm btn-primary js-toggler-target" title="Follow kymjs">联系我</button> </a>
+        </div>
+
+        <div align="center"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-4706145830093249"
+               data-ad-slot="1547827239"
+               data-ad-format="auto"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+      </article>
+      <hr>
+    </div>
+    <div class="post-area post comment">
+      <!-- 多说评论框 start -->
+      
+      <div class="ds-thread" data-thread-key="/2016hongbao/index.html" data-title="2016 猜迷赢红包" data-image="http://www.kymjs.com/image/logo_s.jpg" data-url="http://www.kymjs.com/2016hongbao/index.html"></div>
+      
+      <!-- 多说评论框 end -->
+    </div>
+  </div>
+
+  <div id="content" class="col-sm-3">
+    <div id="myAffix" class="shadow-bottom-center hidden-xs" >
+      <div class="categories-list-header" align="center">
+        支持我请点击右上角的
+        <a href="https://github.com/kymjs"><button class="btn btn-sm btn-primary js-toggler-target" title="Follow kymjs">Follow</button> </a>
+      </div>
+    <!--  <div class="content-text"></div> -->
+    </div>
+
+    <p>
+      
+    </p>
+
+    <div id="myAffix" class="shadow-bottom-center hidden-xs" >
+
+      <div class="categories-list-header" align="center">
+        <a href="https://github.com/kymjs/kymjs.github.io/blob/master/_posts/-01.md"> - -> <font color="#FF0000">文章纠错</font> <- - </a>
+      </div>
+      
+    <!--
+    <div class="categories-list-header" align="center">
+        Android 的 MVP 架构
+        <a href="https://github.com/kymjs/TheMVP"><button class="btn btn-sm btn-primary js-toggler-target" title="Star TheMVP">Star</button> </a>
+      </div>
+    -->
+    </div>
+
+    <p>
+      
+    </p>
+    <div class="shadow-corner-curl hidden-xs">
+  <br />
+  <ul class="list-unstyled">
+      <a href="http://www.kymjs.com/about"><img src="http://www.kymjs.com/images/kymjs_round.png" alt="kymjs张涛" style="width:80%">
+      </a>
+  </ul>
+
+  <span><a href="http://www.kymjs.com/about">
+  <center><font color="#000000">kymjs张涛</font></center>
+  </a></span><br>
+
+  <ul class="list-unstyled">
+    &nbsp;&nbsp;&nbsp;&nbsp;Android移动开发工程师，《<a href="https://github.com/kymjs/KJFrameForAndroid">KJFrameForAndroid</a>》开发框架作者。爱看书，爱敲码，善于交流，乐于分享。曾担任电影《<a href="http://baike.baidu.com/view/8784406.htm">天籁：一万年以后</a>》新媒体产品经理。
+
+    <hr width="90%" style="border:1px dashed black; height:1px">
+
+    <a href="http://www.kymjs.com/"></a><font color="red"><b>QQ交流群：</b></font>
+    <p><a href="http://www.kymjs.com/" target="_blank"></a><a href="http://jq.qq.com/?_wv=1027&amp;k=UH2fnF" target="_blank"><font color="blue"><b>257053751</b></font>（1群，2000人）</a></p>
+    <p><a href="http://jq.qq.com/?_wv=1027&amp;k=P9EObD" target="_blank"><font color="blue"><b>201055521</b></font>（2群，1000人）</a></p>
+    <font color="red"><b>我的邮箱：</b></font><br>
+    <p><b>kymjs123@gmail.com</b></p>
+    <br />
+  </ul>
+  <br />
+</div>
+ 
+    <p>
+      
+    </p>
+    <div class="shadow-corner-curl hidden-xs">
+    <div class="categories-list-header" align="center">
+    	本周热门
+    </div>
+
+	<ul class="list-unstyled">
+		<br />
+		<li><a href="/column/resourcecode.html"><font color="#EE0000">【精】</font>EventBus 源码研读系列</a></li>  
+		<li><a href="/code/2015/10/18/01/">支持 gif 的图片预览控件</a></li>
+		<li><a href="/code/2015/06/06/01/">Android 流式布局实现</a></li>
+		<li><a href="/code/2015/11/09/01/"><font color="#EE0000">【精】</font>用 MVP 架构开发 Android 应用</a></li>
+		<li><a href="/code/2015/05/26/01/">Android 夜间模式实现</a></li>
+		<li><a href="/stickies/2015/04/27/01/">我的创业方案——都市书吧</a></li>
+		<li><a href="/code/2015/04/01/01/"><font color="#EE0000">【精】</font>致那些正在迷茫期的开发者</a></li>	
+		<br />
+	</ul>
+</div>
+
+    <p>
+
+    </p>
+    <div class="shadow-corner-curl hidden-xs">
+	<div class="categories-list-header" align="center">
+        新浪微博
+    </div> 
+	<iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=1&ptype=1&speed=0&skin=5&isTitle=0&noborder=1&isWeibo=1&isFans=1&uid=3025443500&verifier=c1f8031e&colors=f6f6fc,f6f6fc,666666,0082cb,ecfbfd&dpc=1"></iframe>
+ </div>   
+    <p>
+
+    </p>
+    <div class="shadow-corner-curl hidden-xs">
+    <div class="categories-list-header" align="center">
+      为你推荐
+    </div>   
+
+    <ul class="list-unstyled">
+      <br />
+      <div align="center">
+        <li><a href="https://github.com/kymjs?tab=repositories">我的GitHub</a></li> 
+        <li><a href="/works">开源实验室</a></li>
+        <li><a href="http://p.codekk.com/">CodeKK</a></li>
+        <li><a href="http://www.androidweekly.cn/">Android开发技术周报</a></li>
+        <li><a href="http://androiddevtools.cn/">AndroidDevTools</a></li>
+      </div>
+      <br />
+    </ul>
+</div>
+  
+  </div>
+</div>
+  </div>
+    
+    <div id="top" data-toggle="tooltip" data-placement="left" title="回到顶部">
+      <a href="javascript:;">
+        <div class="arrow"></div>
+        <div class="stick"></div>
+      </a>
+    </div>
+
+    <footer class="navbar navbar-inverse">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 navbar-text">
+        <span> kymjs张涛的开源实验室 </span>
+        <span class="point"> · </span>
+        <a href="mailto:kymjs123@gmail.com"><span class="glyphicon glyphicon-envelope"></span> kymjs123@gmail.com</a>
+        <span class="point"> · </span>
+        
+          
+          <a href="https://github.com/kymjs">
+            <span class="icon">
+              <svg viewBox="0 0 16 16">
+                <path fill="#aaa" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            Github
+            <!-- <span>kymjs</span> -->
+          </a>
+          
+          
+          <span class="point"> · </span>
+          <span><a href="//feed.xml">RSS</a></span>
+          <span class="point"> · </span>
+          <span>站务联系：766136833</span>
+          <span class="point"> · </span>
+          <span>Powered by Jekyll</span>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:"kymjs"};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//www.kymjs.com/assets/js/embed_ua.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+
+<!-- 在新窗口中打开 -->
+  <script type="text/javascript">
+    function addBlankTargetForLinks () {
+      $('a[href^="http"]').each(function(){
+          $(this).attr('target', '_blank');
+      });
+    }
+    //每次在有DOM插入时触发
+    $(document).bind('DOMNodeInserted', function(event) {
+      addBlankTargetForLinks();
+    });
+  </script>
+  </body>
+</html>

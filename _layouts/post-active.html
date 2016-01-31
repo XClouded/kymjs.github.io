@@ -1,0 +1,91 @@
+---
+layout: default
+---
+<div class="row">
+  <div id="myArticle" class="col-sm-9">
+    <div class="post-area post">
+      <header align="center">
+        <h1>{{ page.title }}</h1>
+        <p>
+          <h2>{{ page.date | date: "%Y-%m-%d" }}</h2>
+          {% if page.author %} • {{ page.author }}{% endif %}
+          {% if page.meta %} • {{ page.meta }}{% endif %}
+        </p>
+      </header>
+      <hr>
+      <article id="page">
+        <h3>前情提要</h3>
+        {{ page.description }}<br><br>
+        {{content}}
+        <br>
+        <div class="support-author">
+          <p>如果你有兴趣参与成为赞助商，与我们一起玩游戏，请点击下方按钮！</p>
+            <a href="/about"><button class="btn btn-sm btn-primary js-toggler-target" title="Follow kymjs">联系我</button> </a>
+        </div>
+
+        <div align="center"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-4706145830093249"
+               data-ad-slot="1547827239"
+               data-ad-format="auto"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+      </article>
+      <hr>
+    </div>
+    <div class="post-area post comment">
+      <!-- 多说评论框 start -->
+      
+      <div class="ds-thread" data-thread-key="{{ page.url }}" data-title="{{ page.title }}" data-image="http://www.kymjs.com/image/logo_s.jpg" data-url="http://www.kymjs.com{{ page.url }}"></div>
+      
+      <!-- 多说评论框 end -->
+    </div>
+  </div>
+
+  <div id="content" class="col-sm-3">
+    <div id="myAffix" class="shadow-bottom-center hidden-xs" >
+      <div class="categories-list-header" align="center">
+        支持我请点击右上角的
+        <a href="https://github.com/kymjs"><button class="btn btn-sm btn-primary js-toggler-target" title="Follow kymjs">Follow</button> </a>
+      </div>
+    <!--  <div class="content-text"></div> -->
+    </div>
+
+    <p>
+      
+    </p>
+
+    <div id="myAffix" class="shadow-bottom-center hidden-xs" >
+
+      <div class="categories-list-header" align="center">
+        <a href="https://github.com/kymjs/kymjs.github.io/blob/master/_posts/{{ page.date | date: "%Y-%m-%d" }}-01.md"> - -> <font color="#FF0000">文章纠错</font> <- - </a>
+      </div>
+      
+    <!--
+    <div class="categories-list-header" align="center">
+        Android 的 MVP 架构
+        <a href="https://github.com/kymjs/TheMVP"><button class="btn btn-sm btn-primary js-toggler-target" title="Star TheMVP">Star</button> </a>
+      </div>
+    -->
+    </div>
+
+    <p>
+      
+    </p>
+    {% include about.html %} 
+    <p>
+      
+    </p>
+    {% include hot.html %}
+    <p>
+
+    </p>
+    {% include weibo_post.html %}  
+    <p>
+
+    </p>
+    {% include links.html %}  
+  </div>
+</div>

@@ -12,7 +12,7 @@ code: true
 ##游戏规则
 【猜数字赢红包】游戏规则：[http://kymjs.com/2016hongbao/2/](http://kymjs.com/2016hongbao/2) 
 
-##猜谜开始  
+##游戏开始  
 
 ###第一期(2.1-2.3)  
 

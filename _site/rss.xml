@@ -4,8 +4,8 @@
     <title><![CDATA[ 开源实验室]]></title>
     <description><![CDATA[kymjs张涛的开源实验室]]></description>
     <link><![CDATA[ http://www.kymjs.com/]]></link>
-    <pubDate><![CDATA[2016-02-18]]></pubDate>
-    <lastBuildDate><![CDATA[2016-02-18]]></lastBuildDate>
+    <pubDate><![CDATA[2016-02-19]]></pubDate>
+    <lastBuildDate><![CDATA[2016-02-19]]></lastBuildDate>
     
       <item>
         <title><![CDATA[2015年终总结 - 张涛]]></title>
@@ -280,21 +280,6 @@
       </item>
     
       <item>
-        <title><![CDATA[Search Engine Optimization - 张涛]]></title>
-        <description><![CDATA[As a developer, I have to say English. On the way to learn English, I was too young too naive.  - 开源实验室]]></description>
-        <recommend></recommend>
-        <image><![CDATA[]]></image>
-        <pubDate><![CDATA[2015-05-19]]></pubDate>
-        <link><![CDATA[http://www.kymjs.com/english/2015/05/19/01]]></link>
-        
-        <tag><![CDATA[英语学习]]></tag>
-        
-        
-        <category><![CDATA[english]]></category>
-        
-      </item>
-    
-      <item>
         <title><![CDATA[网上订餐产品运营分析 - 张涛]]></title>
         <description><![CDATA[请原谅我就这么黑了小米，不知道为什么，看到小米这个品牌就想去黑它，就觉得不爽。可能真的就是平时为MIUI做兼容的时候被折磨疯了吧。 - 开源实验室]]></description>
         <recommend></recommend>
@@ -456,6 +441,21 @@
         
         
         <category><![CDATA[manager]]></category>
+        
+      </item>
+    
+      <item>
+        <title><![CDATA[致那些正在迷茫期的开发者 - 张涛]]></title>
+        <description><![CDATA[望着床头的两本书，突然有一些感想。 - 开源实验室]]></description>
+        <recommend>true</recommend>
+        <image><![CDATA[http://kymjs.com/images/blog_image/20150401_1.jpg]]></image>
+        <pubDate><![CDATA[2015-04-01]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/code/2015/04/01/01]]></link>
+        
+        <tag><![CDATA[心情随笔]]></tag>
+        
+        
+        <category><![CDATA[code]]></category>
         
       </item>
     

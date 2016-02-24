@@ -526,9 +526,7 @@ DataBinding允许你使用这样的代码为控件设置内容。  </p>
 在实际使用了2个多月后，发现了一个在设计时没有考虑到的问题。就是当Activity(Fragment)作为Presenter被回收的时候，它所持有的ViewDelegate也会被置空，再次恢复时需要记得再次创建ViewDelegate</p>
 </blockquote>
 
-<blockquote>
-  <p><code>java
-//Fragment中，Activity类似使用onRestoreInstanceState()
+<pre><code>//Fragment中，Activity类似使用onRestoreInstanceState()
 @Override
 public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
     super.onViewStateRestored(savedInstanceState);
@@ -542,8 +540,8 @@ public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
         }
     }
 }
-</code></p>
-</blockquote>
+</code></pre>
+
 
         <br>
         <div class="support-author">

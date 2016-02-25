@@ -8,6 +8,21 @@
     <lastBuildDate><![CDATA[2016-02-25]]></lastBuildDate>
     
       <item>
+        <title><![CDATA[记一次代码探查过程  - 张涛]]></title>
+        <description><![CDATA[从 Volley 源码中延伸学习到的 HTTP 请求头的知识   - 开源实验室]]></description>
+        <recommend>true</recommend>
+        <image><![CDATA[http://www.kymjs.com/images/blog_image/20151125_1.jpg]]></image>
+        <pubDate><![CDATA[2016-02-25]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/code/2016/02/25/01]]></link>
+        
+        <tag><![CDATA[笔记]]></tag>
+        
+        
+        <category><![CDATA[code]]></category>
+        
+      </item>
+    
+      <item>
         <title><![CDATA[2015年终总结 - 张涛]]></title>
         <description><![CDATA[就像一个终生跋涉的香客，不停地寻找一座可能根本不存在的神庙，我不知道他寻求的是什么不可思议的涅槃。我只知道，我们中的大多数，苟活一生，却从不曾寻找。我想也许你该停下来，看看你走的路，想想你想要的真实。————Seven凉奈《你的生活，该如何安放》 - 开源实验室]]></description>
         <recommend></recommend>
@@ -75,7 +90,7 @@
         <pubDate><![CDATA[2015-11-26]]></pubDate>
         <link><![CDATA[http://www.kymjs.com/code/2015/11/26/01]]></link>
         
-        <tag><![CDATA[Android技术讲解]]></tag>
+        <tag><![CDATA[笔记]]></tag>
         
         
         <category><![CDATA[code]]></category>
@@ -134,21 +149,6 @@
         <image><![CDATA[http://www.kymjs.com/image/kjgallery/kjgallery.gif]]></image>
         <pubDate><![CDATA[2015-10-18]]></pubDate>
         <link><![CDATA[http://www.kymjs.com/code/2015/10/18/01]]></link>
-        
-        <tag><![CDATA[Android技术讲解]]></tag>
-        
-        
-        <category><![CDATA[code]]></category>
-        
-      </item>
-    
-      <item>
-        <title><![CDATA[RecyclerView的通用适配器，和滚动时不加载图片的封装 - 张涛]]></title>
-        <description><![CDATA[介绍一个通用的Adapter实现，和对RecyclerView滚动时不加载图片的封装。 - 开源实验室]]></description>
-        <recommend>true</recommend>
-        <image><![CDATA[]]></image>
-        <pubDate><![CDATA[2015-10-11]]></pubDate>
-        <link><![CDATA[http://www.kymjs.com/code/2015/10/11/01]]></link>
         
         <tag><![CDATA[Android技术讲解]]></tag>
         

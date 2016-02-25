@@ -8,6 +8,21 @@
     <lastBuildDate><![CDATA[2016-02-25]]></lastBuildDate>
     
       <item>
+        <title><![CDATA[记一次代码探查过程  - 张涛]]></title>
+        <description><![CDATA[从 Volley 源码中延伸学习到的 HTTP 请求头的知识   - 开源实验室]]></description>
+        <recommend>true</recommend>
+        <image><![CDATA[http://www.kymjs.com/images/blog_image/20151125_1.jpg]]></image>
+        <pubDate><![CDATA[2016-02-25]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/code/2016/02/25/01]]></link>
+        
+        <tag><![CDATA[笔记]]></tag>
+        
+        
+        <category><![CDATA[code]]></category>
+        
+      </item>
+    
+      <item>
         <title><![CDATA[2015年终总结 - 张涛]]></title>
         <description><![CDATA[就像一个终生跋涉的香客，不停地寻找一座可能根本不存在的神庙，我不知道他寻求的是什么不可思议的涅槃。我只知道，我们中的大多数，苟活一生，却从不曾寻找。我想也许你该停下来，看看你走的路，想想你想要的真实。————Seven凉奈《你的生活，该如何安放》 - 开源实验室]]></description>
         <recommend></recommend>
@@ -75,7 +90,7 @@
         <pubDate><![CDATA[2015-11-26]]></pubDate>
         <link><![CDATA[http://www.kymjs.com/code/2015/11/26/01]]></link>
         
-        <tag><![CDATA[Android技术讲解]]></tag>
+        <tag><![CDATA[笔记]]></tag>
         
         
         <category><![CDATA[code]]></category>
@@ -441,21 +456,6 @@
         
         
         <category><![CDATA[manager]]></category>
-        
-      </item>
-    
-      <item>
-        <title><![CDATA[致那些正在迷茫期的开发者 - 张涛]]></title>
-        <description><![CDATA[望着床头的两本书，突然有一些感想。 - 开源实验室]]></description>
-        <recommend>true</recommend>
-        <image><![CDATA[http://kymjs.com/images/blog_image/20150401_1.jpg]]></image>
-        <pubDate><![CDATA[2015-04-01]]></pubDate>
-        <link><![CDATA[http://www.kymjs.com/code/2015/04/01/01]]></link>
-        
-        <tag><![CDATA[心情随笔]]></tag>
-        
-        
-        <category><![CDATA[code]]></category>
         
       </item>
     

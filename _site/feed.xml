@@ -9,6 +9,19 @@
     <generator>Jekyll v1.4.2</generator>
     
       <item>
+        <title>记一次代码探查过程  - 张涛</title>
+        <description>从 Volley 源码中延伸学习到的 HTTP 请求头的知识   - 开源实验室</description>
+        <pubDate>2016-02-25</pubDate>
+        <link>http://www.kymjs.com/code/2016/02/25/01</link>
+        
+        <tag>笔记</tag>
+        
+        
+        <category>code</category>
+        
+      </item>
+    
+      <item>
         <title>2015年终总结 - 张涛</title>
         <description>就像一个终生跋涉的香客，不停地寻找一座可能根本不存在的神庙，我不知道他寻求的是什么不可思议的涅槃。我只知道，我们中的大多数，苟活一生，却从不曾寻找。我想也许你该停下来，看看你走的路，想想你想要的真实。————Seven凉奈《你的生活，该如何安放》 - 开源实验室</description>
         <pubDate>2015-12-22</pubDate>
@@ -66,7 +79,7 @@
         <pubDate>2015-11-26</pubDate>
         <link>http://www.kymjs.com/code/2015/11/26/01</link>
         
-        <tag>Android技术讲解</tag>
+        <tag>笔记</tag>
         
         
         <category>code</category>
@@ -509,19 +522,6 @@
         <description>有效解决加载Bitmap时出现OOM的问题 - 开源实验室</description>
         <pubDate>2014-12-05</pubDate>
         <link>http://www.kymjs.com/code/2014/12/05/02</link>
-        
-        <tag>Android技术讲解</tag>
-        
-        
-        <category>code</category>
-        
-      </item>
-    
-      <item>
-        <title>Android仿微信录音功能，自定义控件的设计技巧 - 张涛</title>
-        <description>讲解一个比较通用的录音控件实现方法与设计技巧 - 开源实验室</description>
-        <pubDate>2014-12-05</pubDate>
-        <link>http://www.kymjs.com/code/2014/12/05/01</link>
         
         <tag>Android技术讲解</tag>
         

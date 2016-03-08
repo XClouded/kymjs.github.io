@@ -4,9 +4,22 @@
     <title>开源实验室</title>
     <description>kymjs张涛的开源实验室</description>
     <link>http://www.kymjs.com/</link>
-    <pubDate>2016-02-27</pubDate>
-    <lastBuildDate>2016-02-27</lastBuildDate>
+    <pubDate>2016-03-08</pubDate>
+    <lastBuildDate>2016-03-08</lastBuildDate>
     <generator>Jekyll v1.4.2</generator>
+    
+      <item>
+        <title>一点点基础理论知识  - 张涛</title>
+        <description>“基础 Android 知识掌握的不错，学习能力也不错。但是基础知识部分比较薄弱，有些概念和逻辑掌握不清。” 感谢春林的这句话。 - 开源实验室</description>
+        <pubDate>2016-03-08</pubDate>
+        <link>http://www.kymjs.com/code/2016/03/08/01</link>
+        
+        <tag>笔记</tag>
+        
+        
+        <category>code</category>
+        
+      </item>
     
       <item>
         <title>记一次代码探查过程  - 张涛</title>
@@ -509,19 +522,6 @@
         <description>Android开发中，有一个让人又爱又恨的方法叫findViewById(int);我想如果你是一民Android开发者，必然知道这个方法。 那么为什么让人又爱又恨呢？想必大家也是很有感触。 - 开源实验室</description>
         <pubDate>2014-12-05</pubDate>
         <link>http://www.kymjs.com/code/2014/12/05/03</link>
-        
-        <tag>Android技术讲解</tag>
-        
-        
-        <category>code</category>
-        
-      </item>
-    
-      <item>
-        <title>高效加载Bitmap - 张涛</title>
-        <description>有效解决加载Bitmap时出现OOM的问题 - 开源实验室</description>
-        <pubDate>2014-12-05</pubDate>
-        <link>http://www.kymjs.com/code/2014/12/05/02</link>
         
         <tag>Android技术讲解</tag>
         

@@ -4,8 +4,23 @@
     <title><![CDATA[ 开源实验室]]></title>
     <description><![CDATA[kymjs张涛的开源实验室]]></description>
     <link><![CDATA[ http://www.kymjs.com/]]></link>
-    <pubDate><![CDATA[2016-02-27]]></pubDate>
-    <lastBuildDate><![CDATA[2016-02-27]]></lastBuildDate>
+    <pubDate><![CDATA[2016-03-08]]></pubDate>
+    <lastBuildDate><![CDATA[2016-03-08]]></lastBuildDate>
+    
+      <item>
+        <title><![CDATA[一点点基础理论知识  - 张涛]]></title>
+        <description><![CDATA[“基础 Android 知识掌握的不错，学习能力也不错。但是基础知识部分比较薄弱，有些概念和逻辑掌握不清。” 感谢春林的这句话。 - 开源实验室]]></description>
+        <recommend>true</recommend>
+        <image><![CDATA[http://www.kymjs.com/images/face/chess.jpg]]></image>
+        <pubDate><![CDATA[2016-03-08]]></pubDate>
+        <link><![CDATA[http://www.kymjs.com/code/2016/03/08/01]]></link>
+        
+        <tag><![CDATA[笔记]]></tag>
+        
+        
+        <category><![CDATA[code]]></category>
+        
+      </item>
     
       <item>
         <title><![CDATA[记一次代码探查过程  - 张涛]]></title>
@@ -436,21 +451,6 @@
         <image><![CDATA[]]></image>
         <pubDate><![CDATA[2015-04-11]]></pubDate>
         <link><![CDATA[http://www.kymjs.com/manager/2015/04/11/01]]></link>
-        
-        <tag><![CDATA[策划与管理]]></tag>
-        
-        
-        <category><![CDATA[manager]]></category>
-        
-      </item>
-    
-      <item>
-        <title><![CDATA[项目经理初长成——明确认知 - 张涛]]></title>
-        <description><![CDATA[作为项目经理，尤其是移动开发项目经理，有时候不得不去思考一些非技术上的东西，例如用户体验。 - 开源实验室]]></description>
-        <recommend></recommend>
-        <image><![CDATA[]]></image>
-        <pubDate><![CDATA[2015-04-05]]></pubDate>
-        <link><![CDATA[http://www.kymjs.com/manager/2015/04/05/01]]></link>
         
         <tag><![CDATA[策划与管理]]></tag>
         

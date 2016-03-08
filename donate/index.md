@@ -31,6 +31,11 @@ layout: page-a4
     <td><b>赠言</b></td>
     </tr>
     <tr>
+    <td>橙子</td>
+    <td>￥10 </td>
+    <td>刚做Android，先顶</td>
+    </tr>
+        <tr>
     <td>NATHAN刘楠</td>
     <td>￥66.66 </td>
     <td></td>

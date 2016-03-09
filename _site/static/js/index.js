@@ -133,7 +133,7 @@ function generateContent() {
     // console.log($('#markdown-toc').html());
     if (typeof $('#markdown-toc').html() === 'undefined') {
         // $('#content .content-text').html('<ul><li>文本较短，暂无目录</li></ul>');
-        $('#content').hide();
+        // $('#content').hide();
         // $('#myArticle').removeClass('col-sm-9').addClass('col-sm-12');
     } else {
         $('#content .content-text').html('<ul>' + $('#markdown-toc').html() + '</ul>');

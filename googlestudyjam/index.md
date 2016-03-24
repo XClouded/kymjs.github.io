@@ -1,7 +1,6 @@
 ---
-layout: post-active
+layout: post-gsa
 title: "30天入门 Android 开发， Google 与你一起圆梦"
-description: "Android 设备已经随处可见，你想尝试一下在 Android 设备上的开发和创新吗？快来跟随 Google 的步伐，一起学习 Android 入门课吧！"
 date: 2016-03-24 14:23:42 +0800
 comments: true
 categories: [active]
@@ -11,11 +10,15 @@ tags: [活动]
 * content
 {:toc}
 
-![StudyJams](http://ww2.sinaimg.cn/large/8a41f469jw1f27y2nqh6ij21cw0iw77t.jpg)
-
+![StudyJams](http://ww2.sinaimg.cn/large/8a41f469jw1f27y2nqh6ij21cw0iw77t.jpg)  
+  
+  
 > 在美国，几个朋友聚在一块儿拿着吉他等乐器一同练习演奏叫做 Jam Together，因此 Google Study Jam 名称的意义是一群人聚集在一起进行 Google 技术的学习和创作。——程路  
-> 很多朋友都问我：Android 开发应该怎么学习最好。我的回答都是：看书、敲码。其实在这之上，还有更好一种学习方法，就是交流。  
+>   
+> 很多朋友都问我：Android 开发应该怎么学习最好。我的回答都是：看书、敲码。其实在这之上，还有一种更好的学习方法，就是交流。  
 > 在 2012 年，Google Android 团队开设了 Android Training  板块用于 Android 入门基础讲解。其中的示例简洁而又直观的介绍了 Android 开发中的基础知识。而在今天，为帮助更多的开发者以及希望成为 Android 开发者的同学们，Google 发起了 Study Jams 活动，让你与更多的朋友们一起交流，一起分享，共同创造出一个可以上载至 Google Play 的 Android APP 来。
+
+Android 设备已经随处可见，你想尝试一下在 Android 设备上的开发和创新吗？快来跟随 Google 的步伐，一起学习 Android 入门课吧！  
 
 ## Google Study Jams 活动介绍
 

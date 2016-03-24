@@ -4,17 +4,33 @@ layout: default
 <div id="index" class="row">
   <div class="col-sm-9">
     <div class="post-area">
-      <a href="http://kymjs.com/tweet/" title="留言板">
-      <!-- <a href="http://kymjs.com/2016hongbao/" title="抢红包"> -->
+
+      <!-- <a href="http://kymjs.com/tweet/" title="留言板">
         <div class="post-list-header">
           <br />
           <font color="#EE0000">【置顶】</font>:
           <font color="#333333">留言板</font>
           <br />
         </div>
+      </a> -->
+
+      <div class="post-list-item">
+      <!-- <a href="http://kymjs.com/2016hongbao/" title="抢红包"> -->
+      <a href="http://kymjs.com/googlestudyjam/" title="Google官方活动">
+        <span class="entry-date date published">
+          <font color="#aaaaaa">  置顶帖 By 张涛</font>
+        </span>
+        <h2>
+          <font color="#EE0000">Google官方</font>:
+          <font color="#333333">30 天入门 Android 开发</font>
+        </h2>
+        <p>
+          <font color="#666666"> Android 设备已经随处可见，你想尝试一下在 Android 设备上的开发和创新吗？快来跟随 Google 的步伐，一起学习 Android 入门课吧！ </font>
+        </p>
       </a>
-      <div class="post-list-body">
-        
+      </div>
+
+      <div class="post-list-body">  
         <div class="all-posts" post-cate="All">
         {% for post in paginator.posts %}
           <a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">

@@ -34,11 +34,11 @@ Study Jams 活动是一个免费的，纯公益性的活动，任何人都可以
 
 ## 课程预览视频
 
-<embed src="http://static.video.qq.com/TPout.swf?vid=u0189bvpj48&auto=0" allowFullScreen="true" quality="high" width="580" height="480" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"/>
+<embed src="http://static.video.qq.com/TPout.swf?vid=u0189bvpj48&auto=0" allowFullScreen="true" quality="high" width="100%" height="460" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"/>
 
 ## 课程中包含的 Googler 想对你说的话
 
-<embed src="http://static.video.qq.com/TPout.swf?vid=q0189eptczk&auto=0" allowFullScreen="true" quality="high" width="580" height="480" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"/>
+<embed src="http://static.video.qq.com/TPout.swf?vid=q0189eptczk&auto=0" allowFullScreen="true" quality="high" width="100%" height="460" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"/>
 
 ## 请注意
 

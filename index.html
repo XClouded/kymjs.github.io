@@ -31,7 +31,7 @@ layout: default
       </div>
 
       <div class="post-list-body">  
-        <div class="all-posts" post-cate="All">
+        <div class="all-posts">
         {% for post in paginator.posts %}
           <a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">
             <div class="post-list-item">
@@ -118,10 +118,8 @@ layout: default
                     </h2>
                   
 
-                    {% if posts.size < 8 %}
-                      {% if post.description %}
-                        <p><font color="#666666"> {{ post.description }} </font></p>
-                      {% endif %}
+                    {% if post.description %}
+                      <p><font color="#666666"> {{ post.description }} </font></p>
                     {% endif %}
                   </a>
                 {% endif %}
@@ -151,7 +149,7 @@ layout: default
         分类
       </div>
       
-      <a href="{{'/index.html' | prepend: site.baseurl}}" class="categories-list-item" cate="All">
+      <a href="{{'/index.html'}}" class="categories-list-item" cate="All">
         全部<span class="my-badge"> {{site.posts | size}}</span>
       </a>
 

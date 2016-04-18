@@ -23,8 +23,6 @@ permalink: /:categories/:year/:month/:day/:title
 # redcarpet:
 #     extensions: [ "hard_wrap","autolink", "tables", "strikethrough", "superscript", "with_toc_data", "highlight", "prettify","no_intra_emphasis"]
 
-gems: [jekyll-paginate]
-
 markdown: kramdown
 
 kramdown:
@@ -41,6 +39,7 @@ kramdown:
     coderay_bold_every: 10
     coderay_css: class
 
+gems: [jekyll-paginate]
 paginate: 12
 paginate_path: "page:num"
 

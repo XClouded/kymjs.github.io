@@ -32,7 +32,7 @@ layout: default
 
       <div class="post-list-body">  
         <div class="all-posts" post-cate="All">
-          {% for post in site.posts limit:12 %}
+          {% for post in paginator.posts %}
             <a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">
               <div class="post-list-item">
                 <span class="entry-date date published">

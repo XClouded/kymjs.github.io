@@ -18,27 +18,27 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" align="right">
       <ul class="nav navbar-nav navbar-right">
 
-        {% if page.url == "/column/index.html" %}
+        {% if page.url == "/column/" %}
           <li class="active">{% else %}<li>
-        {% endif %}
+        {% endif %} 
         <a href="{{ site.baseurl }}/column"><span class="glyphicon glyphicon-th-large"></span> 专栏</a></li>
 
-        {% if page.url == "/index.html" %}
+        {% if page.url == "/" %}
           <li class="active">{% else %}<li>
         {% endif %}
         <a href="{{ site.baseurl }}/"><span class="glyphicon glyphicon-th-large"></span> 博客</a></li>
         
-        {% if page.url == "/works/index.html" %}
+        {% if page.url == "/works/" %}
           <li class="active">{% else %}<li>
         {% endif %}
         <a href="{{ site.baseurl }}/works"><span class="glyphicon glyphicon-play"></span> 作品</a></li>
 
-        {% if page.url == "/about/index.html" %}
+        {% if page.url == "/about/" %}
           <li class="active">{% else %}<li>
         {% endif %}
         <a href="{{ site.baseurl }}/about"><span class="glyphicon glyphicon-heart"></span> 关于</a></li>
 
-        {% if page.url == "/donate/index.html" %}
+        {% if page.url == "/donate/" %}
           <li class="active">{% else %}<li>
         {% endif %}
         <a href="{{ site.baseurl }}/donate"><span class="glyphicon glyphicon-heart"></span> 感谢</a></li>

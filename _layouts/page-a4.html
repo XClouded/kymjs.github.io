@@ -23,12 +23,9 @@ layout: default-a4
         </div>
     </article>
 </div>
+
 <div class="post-area post comment">
     <!-- 多说评论框 start -->
-    {% if duoshuo-data-thread-key %}
-        <div class="ds-thread" data-thread-key="{{ page.duoshuo-data-thread-key }}" data-title="{{ duoshuo-title }}" data-image="http://www.kymjs.com/image/logo_s.jpg" data-url="{{ duoshuo-data-url }}"></div>
-    {% else %}
-        <div class="ds-thread" data-thread-key="{{ page.url }}" data-title="{{ page.title }}" data-image="http://www.kymjs.com/image/logo_s.jpg" data-url="{{ site.url }}{{ post.url }}"></div>
-    {% endif %}
+    <div class="ds-thread" data-thread-key="{{ page.url }}" data-title="{{ page.title }}" data-image="http://www.kymjs.com/image/logo_s.jpg" data-url="{{ site.url }}{{ page.url }}"></div>
     <!-- 多说评论框 end -->
 </div>

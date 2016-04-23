@@ -1,5 +1,8 @@
 ---
 layout: page-a4
+duoshuo-data-thread-key: "http://blog.kymjs.com/tweet"  
+duoshuo-title: "留言板" 
+duoshuo-data-url: "http://blog.kymjs.com/tweet"
 ---
 
 <div align="center"><img src="/images/kymjs_round.png" alt="张涛" width="220" height="220"/></div> 

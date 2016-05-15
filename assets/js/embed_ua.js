@@ -93,7 +93,7 @@ function ua(a, e) {
 		} else if (e.match(/unix/ig)) {
 			os = '<span class="os_unix">Unix'
 		} else if (e.match(/symbian/ig)) {
-			os = '<span class="os_nokia">Nokia SymbianOS'
+			os = '<span class="os_nokia">SymbianOS'
 		} else {
 			os = '<span class="os_other">火星系统'
 		}

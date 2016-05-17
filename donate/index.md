@@ -31,6 +31,16 @@ layout: page-a4
     <td><b>赠言</b></td>
     </tr>
     <tr>
+    <td>晨光</td>
+    <td>￥50 </td>
+    <td>帮涛哥补补大脑</td>
+    </tr>
+    <tr>
+    <td>李刚</td>
+    <td>￥9.9 </td>
+    <td>等待你尽快写完插件化的文章</td>
+    </tr>
+    <tr>
     <td>罗迪(lody)</td>
     <td>￥6.66 </td>
     <td></td>

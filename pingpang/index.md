@@ -40,4 +40,4 @@ template_link: "http://kymjs.com/donate"
 ![开源实验室-360装逼卫士](/images/face/360.gif)
 
 ##微信群   
-<img src="/images/blog_image/pingpang_qrcode.png" alt="开源实验室-qrcode" width="220" height="239"/>
+<img src="/images/blog_image/pingpang_qrcode.jpg" alt="开源实验室-qrcode" width="220" height="239"/>

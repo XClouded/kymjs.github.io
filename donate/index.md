@@ -21,7 +21,7 @@ layout: page-a4
   
 ## 感谢大家
      
-*  感谢所有关注我支持我的朋友们 ：   
+*  感谢所有关注我支持我的朋友们(如名字有误，请私聊我修改) ：   
 
 <div align="center">
   <table border="1" width="90%">   
